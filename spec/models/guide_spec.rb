@@ -50,7 +50,7 @@ describe "Guide Model" do
 
     it 'not parse pre without lang' do
       guide = Guide.create(:title => 'Foo Bar', :body => '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
-      guide.body_formatted.should == '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>'
+      guide.body_formatted.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
     end
 
     it 'parse correctly pre with lang' do

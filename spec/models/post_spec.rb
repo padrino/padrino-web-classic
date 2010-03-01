@@ -61,7 +61,7 @@ describe "Post Model" do
 
     it 'not parse pre without lang' do
       post = Post.create(:title => 'Foo Bar', :summary => '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
-      post.summary_formatted.should == '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>'
+      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
     end
 
     it 'parse correctly pre with lang' do
@@ -71,6 +71,11 @@ describe "Post Model" do
       post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
       post = Post.create(:title => 'Foo Bag', :summary => '<pre lang="ruby"><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit</code></pre>')
       post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
+    end
+
+    it 'parse correctly without lang' do
+      post = Post.create(:title => 'Foo Bar', :summary => '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
+      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
     end
   end
 
