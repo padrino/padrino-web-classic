@@ -1,0 +1,33 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:guides, :index)
+      %li=link_to pat(:new), url(:guides, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:guide)
+    .inner
+      %table.table
+        %tr
+          %th=mat(:guide, :id)
+          %th=mat(:guide, :title)
+          %th=mat(:guide, :link)
+          %th=mat(:guide, :draft)
+          %th=mat(:guide, :created_at)
+          %th.last="&nbsp;"
+        -@guides.each do |guide|
+          %tr
+            %td=link_to guide.id, url(:guides, :edit, :id => guide.id)
+            %td=link_to guide.title, url(:guides, :edit, :id => guide.id)
+            %td=link_to PadrinoWww.url(:guides, :show, :id => guide), PadrinoWww.url(:guides, :show, :id => guide), :target => :_blank
+            %td=link_to guide.draft? ? "Yes" : "No", url(:guides, :edit, :id => guide.id)
+            %td=link_to l(guide.updated_at, :format => :short), url(:guides, :edit, :id => guide.id)
+            %td.last
+              =button_to pat(:edit), url(:guides, :edit, :id => guide.id), :method => :get, :class => :button_to 
+              ="|"
+              =button_to pat(:delete), url(:guides, :destroy, :id => guide.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

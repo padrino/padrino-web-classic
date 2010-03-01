@@ -1,0 +1,11 @@
+.grid_12.alpha.margin-top
+  -if @guide
+    -title @guide.title
+    %h1=@guide.title
+    .content~@guide.body_formatted
+  -else
+    %h1 Guide not found
+    .content The guide requested is not available
+
+.grid_4.omega.margin-top=partial "guides/sidebar"
+.clear

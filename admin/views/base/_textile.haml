@@ -1,0 +1,213 @@
+.block
+  %h3 Textile Reference
+  .content
+    %h4 Internal Links
+    %p [[Page Title]]
+    %h4 Code Highlighting
+    %p pre[ruby], pre[html]
+    %h4
+      Phrase modifiers:
+    %p
+      %em
+        _emphasis_
+      %br
+      %strong
+        *strong*
+      %br
+      %i
+        __italic__
+      </br />
+      %b
+        **bold**
+      </br />
+      %cite
+        ??citation??
+      %br
+      \-
+      %del
+        deleted text
+      \-
+      %br
+      +
+      %ins
+        inserted text
+      +
+      %br
+      ^
+      %sup
+        superscript
+      ^
+      %br
+      \~
+      %sub
+        subscript
+      \~
+      %br
+      %span
+        \%span%
+      %br
+      %code
+        @code@
+      %br
+    %h4
+      Block modifiers:
+    %p
+      %b
+        h
+        %i
+          n
+        \.
+      heading
+      %br
+      %b
+        bq.
+      Blockquote
+      %br
+      %b
+        fn
+        %i
+          n
+        \.
+      Footnote
+      %br
+      %b
+        p.
+      Paragraph
+      %br
+      %b
+        bc.
+      Block code
+      %br
+      %b
+        pre.
+      Pre-formatted
+      %br
+      %b
+        \#
+      Numeric list
+      %br
+      %b
+        *
+      Bulleted list
+      %br
+    %h4
+      Links:
+    %p
+      "linktext":http://...
+      %br
+    %h4
+      Punctuation:
+    %p
+      %b
+        "quotes"
+      \→ “quotes”
+      %br
+      %b
+        'quotes'
+      \→ ‘quotes’
+      %br
+      %b
+        it's
+      \→ itâ€™s
+      %br
+      %b
+        em -- dash
+      \→ it’s
+      %br
+      %b
+        en - dash
+      \→ en em — dash
+      %br
+      %b
+        2 x 4
+      \→ 2 2 × 4
+      %br
+      %b
+        foo(tm)
+      \→ foo™
+      %br
+      %b
+        foo(r)
+      \→ foo®
+      %br
+      %b
+        foo(c)
+      \→ foo©
+      %br
+    %h4
+      Attributes:
+    %p
+      (class)
+      %br
+      (#id)
+      %br
+      {style}
+      %br
+      [language]
+      %br
+    %h4
+      Alignment:
+    %p
+      \> right
+      %br
+      \< left
+      %br
+      \= center
+      %br
+      \<> justify
+      %br
+    %h4
+      Tables:
+    %p
+      |_. a|_. table|_. header|
+      %br
+      |a|table|row|
+      %br
+      |a|table|row|
+      %br
+    %h4
+      Images:
+    %p
+      \!imageurl!
+      %br
+      \!imageurl!:http://...
+      %br
+    %h4
+      Acronyms:
+    %p
+      ABC(Always Be Closing)
+      %br
+    %h4
+      Footnotes:
+    %p
+      See foo[
+      %i
+        1
+      ].
+      %br
+      %br
+      fn1. Foo.
+      %br
+    %h4
+      Raw HTML:
+    %p
+      \==no <b>textile</b>==
+      %br
+      %br
+      notextile. no <b>textile
+      %br
+      here</b>
+      %br
+    %h4
+      Extended blocks:
+    %p
+      bq.. quote
+      %br
+      \ 
+      %br
+      continued quote
+      %br
+      \ 
+      %br
+      p. paragraph
+      %br

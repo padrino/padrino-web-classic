@@ -1,0 +1,37 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:posts, :index)
+      %li=link_to pat(:new), url(:posts, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:post)
+    .inner
+      %table.table
+        %tr
+          %th=mat(:post, :id)
+          %th=mat(:post, :title)
+          %th=mat(:post, :link)
+          %th=mat(:post, :categories)
+          %th=mat(:post, :tags)
+          %th=mat(:post, :draft)
+          %th=mat(:post, :created_at)
+          %th.last="&nbsp;"
+        -@posts.each do |post|
+          %tr
+            %td=link_to post.id, url(:posts, :edit, :id => post.id)
+            %td=link_to post.title, url(:posts, :edit, :id => post.id)
+            %td=link_to PadrinoWww.url(:blog, :show, :id => post), PadrinoWww.url(:blog, :show, :id => post), :target => :_blank
+            %td=link_to post.categories.map(&:name).join(", "), url(:posts, :edit, :id => post.id)
+            %td=link_to post.tags, url(:posts, :edit, :id => post.id)
+            %td=link_to post.draft? ? "Yes" : "No", url(:posts, :edit, :id => post.id)
+            %td=link_to l(post.updated_at, :format => :short), url(:posts, :edit, :id => post.id)
+            %td.last
+              =button_to pat(:edit), url(:posts, :edit, :id => post.id), :method => :get, :class => :button_to 
+              ="|"
+              =button_to pat(:delete), url(:posts, :destroy, :id => post.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

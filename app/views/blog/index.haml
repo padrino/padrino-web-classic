@@ -1,0 +1,20 @@
+-title "Blog"
+.grid_12.alpha.margin-top
+  -if @posts.empty?
+    %h1 No Posts Found
+    .content The post requested is not available
+  -else
+    -@posts.each_with_index do |post, i|
+      %h1{:class => ("border-top" if i!=0)}
+        =link_to highlight(post.title, @search), url(:blog, :show, :id => post), :unless => post.body.blank?
+      .content~highlight(post.summary_formatted, @search)
+      .align-right
+        Posted in
+        =post.categories.map(&:name).join(", ")
+        ="|"
+        =time_ago_in_words(post.created_at || Time.now) + ' ago'
+        ="|"
+        =link_to "0 Comments and 0 Reactions", url(:blog, :show, :id => post), :anchor => "disqus_thread"
+    .pagination=paginate_posts(@posts)
+.grid_3.prefix_1.omega.margin-top=partial "blog/sidebar"
+.clear

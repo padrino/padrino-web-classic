@@ -1,0 +1,10 @@
+-if @guide
+  %h3 Chapters
+  %ul
+    -@guide.body_chapters.each do |chapter|
+      %li=link_to chapter, :anchor => Guide.label_for(chapter)
+
+%h3 Guides Index
+%ul
+  -Guide.all(:draft => false).each do |guide|
+    %li=link_to guide.title, url(:guides, :show, :id => guide)

@@ -1,0 +1,22 @@
+.group
+  =f.label :title
+  =f.error_message_on :title
+  =f.text_field :title, :class => :text_field
+  %span.description Ex: Title of the page
+
+.group
+  =f.label :body
+  =f.error_message_on :body
+  ~f.text_area :body, :class => "text_area code", :style => "height:1250px"
+  %span.description Ex: only in textile format, use [[Page Title]] for internal links
+
+.group
+  =f.label :draft
+  =f.error_message_on :draft
+  =f.check_box :draft, :class => :check_box
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:guides, :index)}';return false", :class => :button
+  -unless @guide.new?
+    =f.submit pat(:preview), :onclick => "window.open('#{PadrinoWww.url(:guides, :show, :id => @guide)}');return false", :class => :button

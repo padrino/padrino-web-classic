@@ -1,0 +1,31 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:accounts, :index)
+      %li=link_to pat(:new), url(:accounts, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:account)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:account, :id)
+          %th=mat(:account, :name)
+          %th=mat(:account, :surname)
+          %th=mat(:account, :email)
+          %th.last="&nbsp;"
+        -@accounts.each do |account|
+          %tr
+            %td.first=link_to account.id, url(:accounts, :edit, :id => account.id)
+            %td=link_to account.name, url(:accounts, :edit, :id => account.id)
+            %td=link_to account.surname, url(:accounts, :edit, :id => account.id)
+            %td=link_to account.email, url(:accounts, :edit, :id => account.id)
+            %td.last
+              =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to 
+              ="|"
+              =button_to pat(:delete), url(:accounts, :destroy, :id => account.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

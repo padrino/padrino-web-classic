@@ -1,0 +1,34 @@
+body{font-family:Georgia;color:#222222;}
+a{color:#222222;text-decoration:none;}
+a:hover{text-decoration:underline;color:#3D3D3D;}
+h1{font-weight:normal;font-size:26px;}
+h2{font-weight:normal;border-top:4px solid #CFCFCF;margin-top:20px;padding-top:15px;}
+table td{padding:5px;border-bottom:1px solid #CFCFCF;}
+p{margin-top:10px;margin-bottom:10px;}
+#header{border-bottom:2px solid #222222;}
+#footer{border-top:2px solid #222222; text-align:right;padding:5px 0px 20px 0px;margin-top:20px;}
+ul.menu{margin-top:80px;font-size:16px;float:right;list-style-type:none;margin:0px;margin-top:75px;}
+ul.menu li{float:left;margin-left:45px;padding:0px;}
+ul.menu li a:hover{text-decoration:none;border-bottom:2px solid #3D3D3D;}
+ul.features{list-style-type:none;margin:0px;font-size:28px;line-height:24px;letter-spacing:-3px;text-align:right;}
+ul.features a{color:#393939;}
+ul.features a.alternate{color:#4D4D4D;}
+ul.features a:hover{color:#000;text-decoration:none;}
+ul.features li{padding:0px;margin:0px;}
+h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
+.content a{color:#F03B45;}
+.bordered{border:1px solid red;}
+.margin-top{margin-top:20px;}
+.short-code{padding-top:20px;font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono',monospace;font-size:14px;}
+.screens{position:relative;}
+.screens h2{top:230px;color:#FFF;position:absolute;background-color:#222222;font-size:20px;width:920px;text-align:right;padding:10px;border:none;}
+.highlight{background-color:#ffff88;font-weight:bold;color:#36393d;}
+.align-right{text-align:right;}
+.text_field{border:1px solid #3D3D3D;padding:5px;}
+.button{border:1px solid #3D3D3D;color:#DFDAD9;background-color:#333333;padding:5px;cursor:pointer;}
+.border-top{border-top:4px solid #CFCFCF;margin-top:10px;padding-top:10px;height:100%;}
+.pagination{text-align:right;margin-top:20px;}
+.pagination .page{border:1px solid #222222;padding:0px 5px 0px 5px;margin-left:3px;}
+.pagination .current{border:1px solid #222222;padding:0px 5px 0px 5px;margin-left:3px;color:#DFDAD9;background-color:#333333}
+/* Debug */
+/*.container_16 {background: #fff url(/images/16_col.gif) repeat-y;*/

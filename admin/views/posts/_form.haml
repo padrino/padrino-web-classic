@@ -1,0 +1,40 @@
+.group
+  =f.label :title
+  =f.error_message_on :title
+  =f.text_field :title, :class => :text_field
+  %span.description the title of the post
+
+.group
+  =f.label :tags
+  =f.error_message_on :tags
+  =f.text_field :tags, :class => :text_field
+  %span.description separated by comma
+
+.group
+  =f.label :summary
+  =f.error_message_on :summary
+  ~f.text_area :summary, :class => :text_area, :class => "text_area code", :style => "height:100px"
+  %span.description in textile format. Use [[Page Name]] for internal links.
+
+.group
+  =f.label :body
+  =f.error_message_on :body
+  ~f.text_area :body, :class => :text_area, :class => "text_area code", :style => "height:870px"
+  %span.description in textile format. Use [[Page Name]] for internal links.
+
+.group
+  =f.label :draft
+  =f.error_message_on :draft
+  =f.check_box :draft, :class => :check_box
+
+.group
+  =f.label :categories
+  -Category.all.each do |category|
+    =category.name
+    =f.check_box :category_ids, :value => category.id, :name => "post[category_ids][]", :checked => @post.category_ids.include?(category.id)
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:posts, :index)}';return false", :class => :button
+  -unless @post.new?
+    =f.submit pat(:preview), :onclick => "window.open('#{PadrinoWww.url(:blog, :show, :id => @post)}');return false", :class => :button

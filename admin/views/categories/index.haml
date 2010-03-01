@@ -1,0 +1,25 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:categories, :index)
+      %li=link_to pat(:new), url(:categories, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:category)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:category, :name)
+          %th.last="&nbsp;"
+        -@categories.each do |category|
+          %tr
+            %td.first=link_to category.name, url(:categories, :edit, :id => category.id)
+            %td.last
+              =button_to pat(:edit), url(:categories, :edit, :id => category.id), :method => :get, :class => :button_to 
+              ="|"
+              =button_to pat(:delete), url(:categories, :destroy, :id => category.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

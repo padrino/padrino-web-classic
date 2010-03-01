@@ -1,0 +1,24 @@
+%h3 Categories
+%ul
+  -Category.all.each do |category|
+    -if category.post_count > 0
+      %li=link_to category.name.upcase + " (#{category.post_count})", url(:blog, :category, :id => category)
+
+%h3 Search
+-form_tag url(:blog, :index), :method => :get do
+  %p
+    =text_field_tag :q, :value => params[:q], :class => :text_field, :style => "width:88px"
+    =submit_tag "Search", :class => :button
+    -if params[:q] && params[:q].size > 0 && params[:q].size < 4
+      %em Write at least 4 chars
+    -if @search
+      %em
+        Your query search was
+        %strong.highlight highlighted
+
+%h3 Links
+%ul
+  %li=link_to "Twitter", "http://www.twitter.com/padrinorb", :target => :_blank
+  %li=link_to "Resository", "http://www.github.com/padrino/padrino-framework", :target => :_blank
+  %li=link_to "Issue Tracker", "http://www.github.com/padrino/padrino-framework/issues", :target => :_blank
+      

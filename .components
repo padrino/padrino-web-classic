@@ -1,0 +1,6 @@
+--- 
+:test: rspec
+:mock: none
+:orm: mongomapper
+:renderer: haml
+:script: none
