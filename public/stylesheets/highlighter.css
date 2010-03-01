@@ -9,7 +9,7 @@
 .CodeRay .fu { color:#FFC56D }                      /* function */
 .CodeRay .gv { color:#D0CFFE }                      /* global variable */
 .CodeRay .i  { color:#A4C260 }                      /* integer */
-.CodeRay .il { background:#151515 }                 /* inline code */
+.CodeRay .il { background:#FFF }                    /* inline code */
 .CodeRay .iv { color:#D0CFFE }                      /* instance variable */
 .CodeRay .pp { color:#E7BE69 }                      /* doctype */
 .CodeRay .r  { color:#CB7832 }                      /* keyword */
