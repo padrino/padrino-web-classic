@@ -63,6 +63,8 @@ describe "Post Model" do
       post.summary_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
       post = Post.create(:title => 'Foo Baz', :summary => 'pre[ruby]. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
       post.summary_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
+      post = Post.create(:title => 'Foo Bag', :summary => '<pre lang="ruby"><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit</code></pre>')
+      post.summary_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
     end
   end
 

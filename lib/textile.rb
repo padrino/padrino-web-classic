@@ -28,7 +28,7 @@ module Textile
           next if self[textile_field].blank?
           html = RedCloth.new(self[textile_field]).to_html
           # Parse code
-          html.gsub!(/<pre\s?(?:lang="(.*?)")>(.*?)<\/pre>/m) do
+          html.gsub!(/<pre\s?(?:lang="(.*?)")>(?:<code.*?>)?(.*?)(?:<\/code>)?<\/pre>/m) do
             replacements = { '&amp;' => '&', '&quot;' => '"', '&gt;' => '>', '&lt;' => '<' }
             lang = $1
             code = $2.gsub(/&(?:amp|quot|[gl]t);/) { |entity| replacements[entity] }
