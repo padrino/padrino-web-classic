@@ -55,9 +55,9 @@ describe "Guide Model" do
 
     it 'parse correctly pre with lang' do
       guide = Guide.create(:title => 'Foo Bar', :body => '<pre lang="ruby">Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
-      guide.body_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
+      guide.body_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
       guide = Guide.create(:title => 'Foo Baz', :body => 'pre[ruby]. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
-      guide.body_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
+      guide.body_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
     end
 
     it 'parse correctly chapters' do

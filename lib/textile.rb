@@ -18,6 +18,10 @@ module Textile
                      gsub(/-$/, '').
                      gsub(/^-/, '')
     end
+
+    def regenerate_textile
+      all.each { |c| c.update_attributes(:updated_at => Time.now) }
+    end
   end
 
   module InstanceMethods
@@ -32,7 +36,7 @@ module Textile
             replacements = { '&amp;' => '&', '&quot;' => '"', '&gt;' => '>', '&lt;' => '<' }
             lang = $1
             code = $2.gsub(/&(?:amp|quot|[gl]t);/) { |entity| replacements[entity] }
-            CodeRay.scan(code, lang).div(:css => :class)
+            Albino.colorize(code, lang)
           end
           # Prarse charpters
           if textile_options[:chapters]

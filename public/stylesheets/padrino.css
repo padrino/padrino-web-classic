@@ -19,7 +19,7 @@ h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
 .content a{color:#F03B45;}
 .bordered{border:1px solid red;}
 .margin-top{margin-top:20px;}
-.short-code{padding-top:20px;font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono',monospace;font-size:14px;}
+.short-code{padding-top:20px;font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier','Terminal',monospace;font-size:14px;}
 .screens{position:relative;}
 .screens h2{top:230px;color:#FFF;position:absolute;background-color:#222222;font-size:20px;width:920px;text-align:right;padding:10px;border:none;}
 .highlight{background-color:#ffff88;font-weight:bold;color:#36393d;}

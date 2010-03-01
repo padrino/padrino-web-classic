@@ -66,11 +66,11 @@ describe "Post Model" do
 
     it 'parse correctly pre with lang' do
       post = Post.create(:title => 'Foo Bar', :summary => '<pre lang="ruby">Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
-      post.summary_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
+      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
       post = Post.create(:title => 'Foo Baz', :summary => 'pre[ruby]. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
-      post.summary_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
+      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
       post = Post.create(:title => 'Foo Bag', :summary => '<pre lang="ruby"><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit</code></pre>')
-      post.summary_formatted.should == "<div class=\"CodeRay\">\n  <div class=\"code\"><pre><span class=\"co\">Lorem</span> ipsum dolor sit amet, consectetur adipisicing elit</pre></div>\n</div>\n"
+      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
     end
   end
 
