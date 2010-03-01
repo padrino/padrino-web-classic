@@ -44,8 +44,10 @@ module Textile
             self.send("#{textile_field}_chapters=", chapters)
           end
           # Parse internal links
-          html.gsub!(/\[\[([^\]]+)\]\]/) do
-            "<a href=\"/#{textile_options[:internal_links]}/#{Post.permalink_for($1.strip)}\">#{$1.strip}</a>"
+          html.gsub!(/\[\[(.+)\]\]/) do
+            page, name = *$1.split("|") # this allow to rename link ex: [[Page Name|link me]]
+            name ||= page
+            "<a href=\"/#{textile_options[:internal_links]}/#{Post.permalink_for(page.strip)}\">#{name.strip}</a>"
           end
           # Write content
           self.send("#{textile_field}_formatted=", html)

@@ -53,6 +53,12 @@ describe "Post Model" do
       linker.summary_formatted.should == '<p>I should link to <a href="/blog/linked-page">Linked Page</a></p>'
     end
 
+    it 'create correctly named internal links' do
+      linked = Post.create(:title => 'Linked Page', :summary => 'Im the linked page')
+      linker = Post.create(:title => 'Linker', :summary => 'I should link to [[Linked Page|Custom Name]]')
+      linker.summary_formatted.should == '<p>I should link to <a href="/blog/linked-page">Custom Name</a></p>'
+    end
+
     it 'not parse pre without lang' do
       post = Post.create(:title => 'Foo Bar', :summary => '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
       post.summary_formatted.should == '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>'
