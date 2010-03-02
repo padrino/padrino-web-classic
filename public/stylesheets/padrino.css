@@ -3,8 +3,6 @@ a{color:#222222;text-decoration:none;}
 a:hover{text-decoration:underline;color:#3D3D3D;}
 h1{font-weight:normal;font-size:26px;}
 h2{font-weight:normal;border-top:4px solid #CFCFCF;margin-top:20px;padding-top:15px;}
-table th{padding:5px 10px 5px 10px;border-bottom:2px solid #CFCFCF;}
-table td{padding:5px 10px 5px 10px;border-bottom:1px solid #CFCFCF;}
 p{margin-top:10px;margin-bottom:10px;}
 #header{border-bottom:2px solid #222222;}
 #footer{border-top:2px solid #222222; text-align:right;padding:5px 0px 20px 0px;margin-top:20px;}
@@ -31,5 +29,7 @@ h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
 .pagination{text-align:right;margin-top:20px;}
 .pagination .page{border:1px solid #222222;padding:0px 5px 0px 5px;margin-left:3px;}
 .pagination .current{border:1px solid #222222;padding:0px 5px 0px 5px;margin-left:3px;color:#DFDAD9;background-color:#333333}
+.container_16 table th{padding:5px 10px 5px 10px;border-bottom:2px solid #CFCFCF;}
+.container_16 table td{padding:5px 10px 5px 10px;border-bottom:1px solid #CFCFCF;}
 /* Debug */
 /*.container_16 {background: #fff url(/images/16_col.gif) repeat-y;*/
