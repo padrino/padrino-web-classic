@@ -22,7 +22,8 @@ class Account
   validates_format_of       :role,     :with => /[A-Za-z]/
 
   # Callbacks
-  before_save :generate_password
+  before_save  :generate_password
+  after_create :send_notification
 
   ##
   # This method is for authentication purpose
@@ -39,6 +40,13 @@ class Account
     crypted_password.decrypt(salt)
   end
 
+  ##
+  # This method return name + surname
+  # 
+  def full_name
+    "#{name} #{surname}".strip
+  end
+
   private
     def generate_password
       return if password.blank?
@@ -48,5 +56,9 @@ class Account
 
     def password_required
       crypted_password.blank? || !password.blank?
+    end
+
+    def send_notification
+      Notifier.deliver(:registration, self) if defined?(Notifier) # not loaded in test!!
     end
 end

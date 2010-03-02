@@ -1,0 +1,15 @@
+Hi <%= account.name %>,
+
+thank you for signing up for a Padrino WebSite account!
+
+These are your login data:
+
+email: <%= account.email %>
+password: <%= account.password_clean %>
+
+url: <%= Notifier.base_url %><%= Admin.url(:sessions, :new) %>
+
+---
+Best Regards
+Padrino Team
+

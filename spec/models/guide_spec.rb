@@ -64,5 +64,11 @@ describe "Guide Model" do
       guide = Guide.create(:title => 'Foo Bar', :body => 'h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
       guide.body_formatted.should == "<a name=\"lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit\">&nbsp</a>\n<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>"
     end
+
+    it 'can generate a diff' do
+      guide = Guide.create(:title => 'Foo Bar', :body => 'h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
+      guide.body = "h3. foo"
+      guide.diff(:body).should == ""
+    end
   end
 end

@@ -34,6 +34,8 @@ class PadrinoWww < Padrino::Application
 
   end
 
+  disable :padrino_mailer # disabled for a bug in padrino mailer in 0.9.3
+
   ##
   # You can manage errors like:
   # 
