@@ -9,9 +9,9 @@ end
 
 task :author => :environment do
   print "Adding author to posts ... "
-  Post.all.each { |p| p.update_attributes(:account_id => Account.first.id) }
+  Post.all.each { |p| p.update_attributes(:author_id => Account.first.id) }
   puts "done!"
   print "Adding author to guides ... "
-  Guide.all.each { |c| c.update_attributes(:account_id => Account.first.id) }
+  Guide.all.each { |c| c.update_attributes(:author_id => Account.first.id) }
   puts "done!"
 end
