@@ -1,9 +1,19 @@
 class PadrinoWww < Padrino::Application
   ##
+  # Exception Notifier
+  # 
+  register ExceptionNotifier
+  set :exceptions_from, "Padrino WebSite <exceptions@padrinorb.com>"
+  set :exceptions_to,   Account.all.map(&:email)
+  set :exceptions_page, "base/errors"
+  # Only for test locally exception notifier
+  #   disable :raise_errors
+  #   disable :show_exceptions
+
+  ##
   # We have few helpers so we put it here instead of app/helpers/my_helper.rb
   # 
   helpers do
-
     def key_density(*words)
       words.join(" - ").concat(" - Padrino - Ruby Framework").gsub(/^ - /, '')
     end
@@ -31,17 +41,7 @@ class PadrinoWww < Padrino::Application
         }.join
       end
     end
-
-  end
+  end # Helpers
 
   disable :padrino_mailer # disabled for a bug in padrino mailer in 0.9.3
-
-  ##
-  # You can manage errors like:
-  # 
-  #   errors 404 do
-  #     render 'errors/404'
-  #   end
-  #
-
-end
+end # PadrinoWww
