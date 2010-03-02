@@ -9,12 +9,13 @@ gem 'popen4'
 
 # Component requirements
 gem 'haml'
+gem 'mongo_ext', :require => 'mongo'
 gem 'mongo_mapper'
-gem 'mongo_ext', :require => "mongo"
+gem 'diff-lcs',  :require => 'diff/lcs'
 
 # Test requirements
 gem 'rspec', :require => "spec", :group => "test"
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+gem 'rack-test', :require => 'rack/test', :group => "test"
 
 # Padrino
 %w(core gen helpers mailer admin).each do |gem|
