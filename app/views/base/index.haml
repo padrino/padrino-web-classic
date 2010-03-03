@@ -1,109 +1,31 @@
 -title "The Ruby Framework for Artists"
-%h1.slogan The Ruby Framework for Artists
+%h1.slogan=Page.find_labeled(:home_slogan).try(:body)
 
 .grid_6.alpha.margin-top=image_tag("glass.png", :alt => "Padrino Ruby Framework")
-.grid_6.short-code.margin-top
-  .l gem install padrino
-  .l padrino-gen project blog -d datamapper -b
-  .l padrino-gen admin
-  .l padrino start
+.grid_6.margin-top~Page.find_labeled(:home_code).try(:body_formatted)
 .grid_4.omega
   %ul.features
-    %li=link_to "SINATRA&nbsp;&nbsp;CORE", "#"
-    %li=link_to "ORM&nbsp;&nbsp;AGNOSTIC", "#", :class => :alternate
-    %li=link_to "JS&nbsp;&nbsp;AGNOSTIC", "#"
-    %li=link_to "TEST&nbsp;&nbsp;AGNOSTIC", "#", :class => :alternate
-    %li=link_to "BUILTIN&nbsp;&nbsp;ADMIN", "#"
-    %li=link_to "HELPERS", "#", :class => :alternate
+    -Page.find_all_labeled(:home_feature).each_with_index do |feature, i|
+      %li=link_to feature.title.upcase, :anchor => feature.id, :toptions => "width = 400, type = dom, resizable = 0", :class => (:alternate if i%2==0)
 .clear
+
+-Page.find_all_labeled(:feature).each do |feature|
+  .feature{:id => feature.id, :style => "display:none"}
+    %h3=feature.title
+    ~feature.body_formatted
 
 .screens
   =link_to image_tag("screens.jpg", :alt => "Admin"), image_path("login.png"), :toptions => "effect = appear, group = screenshoots", :class => :top_up
-  %h2 Padrino Admin is a quick way to manage your backend!
+  =Page.find_labeled(:home_admin).try(:body_formatted)
 
 =link_to image_tag("dashboard.png", :alt => "Dashboard Page"), image_path("dashboard.png"), :toptions => "group = screenshoots", :style => "display:none"
 =link_to image_tag("index.png", :alt => "Index Page"), image_path("index.png"), :toptions => "group = screenshoots", :style => "display:none"
 
-%h2 Preface
-
-%p 
-  Padrino is a ruby framework built upon the excellent Sinatra Microframework.
-  Sinatra is a DSL for creating simple web applications in Ruby with speed and minimal effort. 
-  This framework tries hard to make it as fun and easy as possible to code much more advanced web applications 
-  by building upon the Sinatra philosophies and foundation.
-
-%h2 Introduction
-
-%p 
-  Many people love Sinatra’s simplicity and lightweight but often quickly come to miss a great deal of functionality 
-  provided by other web frameworks such as Rails when building non-trivial applications.
-
-%p
-  Our goal with this framework is to match the essence of Sinatra and at the same time create a standard library of tools, 
-  helpers and components that will make Sinatra suitable for more complex applications.
-
-%p Here is a brief overview of functionality provided by the Padrino framework:
+.margin-top~Page.find_labeled(:home).try(:body_formatted)
 
 .grid_5.alpha.margin-top
   %br
   %br
   =image_tag("mic.png", :alt => "mic")
-.grid_11.omega.margin-top
-  %table
-    %tr
-      %td Agnostic:
-      %td
-        Full support for many popular testing, templating, mocking, and data
-        storage choices.
-    %tr
-      %td Generators:
-      %td
-        Create Padrino applications, models, controllers i.e: padrino-gen project.
-    %tr
-      %td Mountable:
-      %td
-        Unlike other ruby frameworks, principally designed for mounting multiple
-        apps.
-    %tr
-      %td Routing:
-      %td
-        Full url named routes, named params, respond_to support, before/after
-        filter support.
-    %tr
-      %td Tag Helpers:
-      %td
-        View helpers such as: tag, content_tag, input_tag.
-    %tr
-      %td Asset Helpers:
-      %td
-        View helpers such as: link_to, image_tag, javascript_include_tag.
-    %tr
-      %td Form Helpers:
-      %td
-        Builder support such as: form_tag, form_for, field_set_tag, text_field.
-    %tr
-      %td Text Helpers:
-      %td
-        Useful formatting like: relative_time_ago, js_escape_html, sanitize_html.
-    %tr
-      %td Mailer:
-      %td
-        Fast and simple delivery support for sending emails (akin to ActionMailer).
-    %tr
-      %td Admin:
-      %td
-        Builtin Admin interface (like Django)
-    %tr
-      %td Logging:
-      %td
-        Provide a unified logger that can interact with your ORM or any library.
-    %tr
-      %td Reloading:
-      %td
-        Automatically reloads server code during development.
-    %tr
-      %td Localization:
-      %td
-        Full support of I18n language localization and can auto-set user’s
-        locale.
+.grid_11.omega.margin-top~Page.find_labeled(:home_mic).try(:body_formatted)
 .clear

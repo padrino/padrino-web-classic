@@ -21,7 +21,7 @@ h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
 .margin-top{margin-top:20px;}
 .short-code{padding-top:20px;font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier','Terminal',monospace;font-size:13px;}
 .screens{position:relative;}
-.screens h2{top:230px;color:#FFF;position:absolute;background-color:#222222;font-size:20px;width:920px;text-align:right;padding:10px;border:none;}
+.screens p{top:230px;color:#FFF;position:absolute;background-color:#222222;font-size:20px;width:920px;text-align:right;padding:10px;border:none;}
 .highlight{background-color:#ffff88;font-weight:bold;color:#36393d;}
 .align-right{text-align:right;}
 .text_field{border:1px solid #3D3D3D;padding:5px;}
@@ -32,5 +32,6 @@ h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
 .pagination .current{border:1px solid #222222;padding:0px 5px 0px 5px;margin-left:3px;color:#DFDAD9;background-color:#333333}
 .container_16 table th{padding:5px 10px 5px 10px;border-bottom:2px solid #CFCFCF;}
 .container_16 table td{padding:5px 10px 5px 10px;border-bottom:1px solid #CFCFCF;}
+.feature{padding:10px;background-color:#FFF;}
 /* Debug */
 /*.container_16 {background: #fff url(/images/16_col.gif) repeat-y;*/

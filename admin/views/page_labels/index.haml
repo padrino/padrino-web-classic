@@ -11,12 +11,14 @@
     .inner
       %table.table
         %tr
-          %th.first=mat(:page_label, :name)
+          %th=mat(:page_label, :id)
+          %th=mat(:page_label, :name)
           %th=mat(:page_label, :description)
           %th.last="&nbsp;"
         -@page_labels.each do |page_label|
           %tr
-            %td.first=link_to page_label.name, url(:page_labels, :edit, :id => page_label.id)
+            %td.first=link_to page_label.id, url(:page_labels, :edit, :id => page_label.id)
+            %td=link_to page_label.name, url(:page_labels, :edit, :id => page_label.id)
             %td=link_to page_label.description, url(:page_labels, :edit, :id => page_label.id)
             %td.last
               =button_to pat(:edit), url(:page_labels, :edit, :id => page_label.id), :method => :get, :class => :button_to 

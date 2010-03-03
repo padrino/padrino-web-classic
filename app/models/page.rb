@@ -19,6 +19,16 @@ class Page
   before_save :generate_label
   validate :label_present
 
+  def self.find_labeled(name)
+    label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
+    first(:label_id => label.id) if label
+  end
+
+  def self.find_all_labeled(name)
+    label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
+    label ? all(:label_id => label.id) : []
+  end
+
   private
     def label_present
       errors.add(:label, "must be present") if label_id.blank? &&  label_name.blank?
