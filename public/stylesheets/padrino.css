@@ -15,7 +15,7 @@ ul.features a.alternate{color:#4D4D4D;}
 ul.features a:hover{color:#000;text-decoration:none;}
 ul.features li{padding:0px;margin:0px;}
 h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
-.content a{color:#F03B45;}
+.content a{color:#F03B45; margin-bottom:10px;}
 .bordered{border:1px solid red;}
 .margin-top{margin-top:20px;}
 .short-code{padding-top:20px;font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier','Terminal',monospace;font-size:13px;}
