@@ -11,7 +11,7 @@ Admin.controllers :guides do
   end
 
   post :create do
-    @guide = Guide.new(params[:guide])
+    @guide = Guide.new(params[:guide].merge(:author_id => current_account.id))
     if @guide.save
       flash[:notice] = 'Guide was successfully created.'
       redirect url(:guides, :edit, :id => @guide.id)
@@ -27,7 +27,7 @@ Admin.controllers :guides do
 
   put :update, :with => :id do
     @guide = Guide.find(params[:id])
-    if @guide.update_attributes(params[:guide])
+    if @guide.update_attributes(params[:guide].merge(:author_id => current_account.id))
       flash[:notice] = 'Guide was successfully updated.'
       redirect url(:guides, :edit, :id => @guide.id)
     else

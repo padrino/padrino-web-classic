@@ -1,10 +1,3 @@
-%h3 Categories
-%ul
-  -Category.all.each do |category|
-    -if category.post_count > 0
-      %li=link_to category.name.upcase + " (#{category.post_count})", url(:blog, :category, :id => category)
-
-%h3 Search
 -form_tag url(:blog, :index), :method => :get do
   %p
     =text_field_tag :q, :value => params[:q], :class => :text_field, :style => "width:88px"
@@ -16,9 +9,22 @@
         Your query search was
         %strong.highlight highlighted
 
+%h3.margin-top Categories
+%ul
+  -Category.all.each do |category|
+    -if category.post_count > 0
+      %li=link_to category.name.upcase + " (#{category.post_count})", url(:blog, :category, :id => category)
+
+-if @post
+  %h3 Info
+  %ul
+    %li='Author ' + @post.author.full_name
+    %li='Posted ' + time_ago_in_words(@post.created_at || Time.now) + ' ago'
+    %li=link_to '0 Comments', :anchor => :disqus_thread
+
 %h3 Links
 %ul
   %li=link_to "Twitter", "http://www.twitter.com/padrinorb", :target => :_blank
   %li=link_to "Resository", "http://www.github.com/padrino/padrino-framework", :target => :_blank
   %li=link_to "Issue Tracker", "http://www.github.com/padrino/padrino-framework/issues", :target => :_blank
-      
+  %li=link_to "Feeds", url(:blog, :index, :format => :rss), :target => :_blank

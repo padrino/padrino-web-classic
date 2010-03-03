@@ -26,6 +26,11 @@ module Textile
 
   module InstanceMethods
 
+    def diff(key)
+      return unless send("#{key}_changed?")
+      Diff.cs_diff(send("#{key}_was"), send(key))
+    end
+
     protected
       def generate_textile
         textile_fields.each do |textile_field|

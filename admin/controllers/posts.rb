@@ -11,7 +11,7 @@ Admin.controllers :posts do
   end
 
   post :create do
-    @post = Post.new(params[:post])
+    @post = Post.new(params[:post].merge(:author_id => current_account.id))
     if @post.save
       flash[:notice] = 'Post was successfully created.'
       redirect url(:posts, :edit, :id => @post.id)
@@ -27,7 +27,7 @@ Admin.controllers :posts do
 
   put :update, :with => :id do
     @post = Post.find(params[:id])
-    if @post.update_attributes(params[:post])
+    if @post.update_attributes(params[:post].merge(:author_id => current_account.id))
       flash[:notice] = 'Post was successfully updated.'
       redirect url(:posts, :edit, :id => @post.id)
     else

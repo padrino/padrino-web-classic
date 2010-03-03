@@ -54,9 +54,10 @@ class Albino
     new(*args).colorize
   end
 
-  def initialize(target, lexer = :text, format = :html)
+  def initialize(target, lexer = :text, format = :html, options={})
+    options.reverse_merge!(:cssclass => 'padrino-syntax')
     @target  = File.exists?(target) ? File.read(target) : target rescue target
-    @options = { :l => lexer, :f => format, :O => 'cssclass=padrino-syntax' }
+    @options = { :l => lexer, :f => format, :O => options.map { |k,v| "#{k}=#{v}" }.join(",") }
   end
 
   def execute(command)
