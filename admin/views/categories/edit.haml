@@ -1,7 +1,8 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first=link_to pat(:list), url(:categories, :index)
+      %li.first=link_to pat(:posts), url(:posts, :index)
+      %li=link_to pat(:list), url(:categories, :index)
       %li=link_to pat(:new), url(:categories, :new)
       %li.active=link_to pat(:edit), url(:categories, :edit, :id => @category.id)
   .content

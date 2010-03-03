@@ -25,6 +25,11 @@ class Account
   before_save  :generate_password
   after_create :send_notification
 
+  # Relations
+  many :posts,  :foreign_key => "author_id", :dependent => :destroy
+  many :guides, :foreign_key => "author_id", :dependent => :destroy
+  many :pages,  :foreign_key => "author_id", :dependent => :destroy
+
   ##
   # This method is for authentication purpose
   # 
@@ -45,6 +50,13 @@ class Account
   # 
   def full_name
     "#{name} #{surname}".strip
+  end
+
+  ##
+  # We need to prevent destroy if we have posts/guides/pages
+  # 
+  def destroy
+    posts.empty? && guides.empty? && pages.empty? ? super : false
   end
 
   private

@@ -1,0 +1,29 @@
+.group
+  =f.label :title
+  =f.error_message_on :title
+  =f.text_field :title, :class => :text_field
+  %span.description Ex: Title of the page
+
+.group
+  =f.label :body
+  =f.error_message_on :body
+  ~f.text_area :body, :class => "text_area code", :style => "height:1250px"
+  %span.description Ex: only in textile format, use [[Page Title]] for internal links
+
+.group
+  =f.label :draft
+  =f.error_message_on :draft
+  =f.check_box :draft, :class => :check_box
+
+.group
+  =f.label :label
+  =f.select :label_id, :collection => PageLabel.all, :fields => [:name, :id], :include_blank => 'Select a label'
+  or create a new one
+  =f.text_field :label_name, :class => :text_field, :style => "width:150px"
+  =f.error_message_on :label
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:pages, :index)}';return false", :class => :button
+  -unless @page.new?
+    =f.submit pat(:preview), :onclick => "window.open('#{PadrinoWeb.url(:pages, :show, :id => @page)}');return false", :class => :button

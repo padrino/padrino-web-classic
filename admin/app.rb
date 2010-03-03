@@ -25,9 +25,11 @@ class Admin < Padrino::Application
     end
 
     access_control.roles_for :admin do |role, account|
+      role.allow "/page_labels"
+      role.allow "/categories"
+      role.project_module :pages, "/pages"
       role.project_module :guides, "/guides"
       role.project_module :posts, "/posts"
-      role.project_module :categories, "/categories"
       role.project_module :accounts, "/accounts"
     end
 

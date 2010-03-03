@@ -1,0 +1,28 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:pages), url(:pages, :index)
+      %li.active=link_to pat(:list), url(:page_labels, :index)
+      %li=link_to pat(:new), url(:page_labels, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:page_label)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:page_label, :name)
+          %th=mat(:page_label, :description)
+          %th.last="&nbsp;"
+        -@page_labels.each do |page_label|
+          %tr
+            %td.first=link_to page_label.name, url(:page_labels, :edit, :id => page_label.id)
+            %td=link_to page_label.description, url(:page_labels, :edit, :id => page_label.id)
+            %td.last
+              =button_to pat(:edit), url(:page_labels, :edit, :id => page_label.id), :method => :get, :class => :button_to 
+              ="|"
+              =button_to pat(:delete), url(:page_labels, :destroy, :id => page_label.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

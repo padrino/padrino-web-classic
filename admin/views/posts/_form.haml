@@ -37,4 +37,4 @@
   =f.submit pat(:save), :class => :button
   =f.submit pat(:cancel), :onclick => "window.location='#{url(:posts, :index)}';return false", :class => :button
   -unless @post.new?
-    =f.submit pat(:preview), :onclick => "window.open('#{PadrinoWww.url(:blog, :show, :id => @post)}');return false", :class => :button
+    =f.submit pat(:preview), :onclick => "window.open('#{PadrinoWeb.url(:blog, :show, :id => @post)}');return false", :class => :button

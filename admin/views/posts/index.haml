@@ -1,7 +1,9 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first.active=link_to pat(:list), url(:posts, :index)
+      %li.first=link_to pat(:categories), url(:categories, :index)
+      %li.active=link_to pat(:list), url(:posts, :index)
+      %li=link_to pat(:categories), url(:categories, :index)
       %li=link_to pat(:new), url(:posts, :new)
   .content
     %h2.title
@@ -22,7 +24,7 @@
           %tr
             %td=link_to post.id, url(:posts, :edit, :id => post.id)
             %td=link_to post.title, url(:posts, :edit, :id => post.id)
-            %td=link_to PadrinoWww.url(:blog, :show, :id => post), PadrinoWww.url(:blog, :show, :id => post), :target => :_blank
+            %td=link_to PadrinoWeb.url(:blog, :show, :id => post), PadrinoWeb.url(:blog, :show, :id => post), :target => :_blank
             %td=link_to post.categories.map(&:name).join(", "), url(:posts, :edit, :id => post.id)
             %td=link_to post.tags, url(:posts, :edit, :id => post.id)
             %td=link_to post.draft? ? "Yes" : "No", url(:posts, :edit, :id => post.id)

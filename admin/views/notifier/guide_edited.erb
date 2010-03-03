@@ -2,7 +2,7 @@ Hi,<br />
 <br />
 <%= guide.author.full_name %> edited a guide "<%= guide.title %>"<br />
 <br />
-you can see it here: <%= Notifier.base_url %><%= PadrinoWww.url(:guides, :show, :id => guide) %><br />
+you can see it here: <%= Notifier.base_url %><%= PadrinoWeb.url(:guides, :show, :id => guide) %><br />
 <br />
 <%= %w(title body).map { |key|
     if diff = guide.diff(key)

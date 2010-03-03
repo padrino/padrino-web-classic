@@ -2,7 +2,7 @@ Hi,
 
 <%= post.author.full_name %> created a post "<%= post.title %>"
 
-you can see it here: <%= Notifier.base_url %><%= PadrinoWww.url(:blog, :show, :id => post) %>
+you can see it here: <%= Notifier.base_url %><%= PadrinoWeb.url(:blog, :show, :id => post) %>
 
 ---
 Best Regards

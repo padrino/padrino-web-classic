@@ -1,4 +1,4 @@
-PadrinoWww.controllers :guides do
+PadrinoWeb.controllers :guides do
   get :index, :map => "/guides" do
     @guide = Guide.find_by_title('Home')
     render 'guides/show'

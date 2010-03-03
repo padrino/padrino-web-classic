@@ -2,7 +2,7 @@ Hi,<br />
 <br />
 <%= post.author.full_name %> edited a post "<%= post.title %>"<br />
 <br />
-you can see it here: <%= Notifier.base_url %><%= PadrinoWww.url(:blog, :show, :id => post) %><br />
+you can see it here: <%= Notifier.base_url %><%= PadrinoWeb.url(:blog, :show, :id => post) %><br />
 <br />
 <%= %w(title summary body).map { |key|
     if diff = post.diff(key)

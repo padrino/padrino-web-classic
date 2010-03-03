@@ -1,4 +1,4 @@
-PadrinoWww.controllers :base do
+PadrinoWeb.controllers :base do
 
   get :index, :map => "/" do
     render 'base/index'

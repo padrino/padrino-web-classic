@@ -1,0 +1,16 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:pages), url(:pages, :index)
+      %li=link_to pat(:list), url(:page_labels, :index)
+      %li=link_to pat(:new), url(:page_labels, :new)
+      %li.active=link_to pat(:edit), url(:page_labels, :edit, :id => @page_label.id)
+  .content
+    %h2.title
+      =pat(:edit)
+      =mt(:page_label)
+    .inner
+      -form_for :page_label, url(:page_labels, :update, :id => @page_label.id), :method => :put, :class => :form do |f|
+        =partial "page_labels/form", :locals => { :f => f }
+
+-content_for :sidebar, partial("base/sidebar")
