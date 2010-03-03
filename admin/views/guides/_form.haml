@@ -19,4 +19,4 @@
   =f.submit pat(:save), :class => :button
   =f.submit pat(:cancel), :onclick => "window.location='#{url(:guides, :index)}';return false", :class => :button
   -unless @guide.new?
-    =f.submit pat(:preview), :onclick => "window.open('#{PadrinoWww.url(:guides, :show, :id => @guide)}');return false", :class => :button
+    =f.submit pat(:preview), :onclick => "window.open('#{PadrinoWeb.url(:guides, :show, :id => @guide)}');return false", :class => :button

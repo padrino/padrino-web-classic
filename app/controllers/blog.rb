@@ -1,4 +1,4 @@
-PadrinoWww.controllers :blog do
+PadrinoWeb.controllers :blog do
 
   get :index, :map => "/blog", :respond_to => [:html, :rss] do
     case content_type

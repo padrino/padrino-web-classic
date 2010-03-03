@@ -1,4 +1,4 @@
-class PadrinoWww < Padrino::Application
+class PadrinoWeb < Padrino::Application
   ##
   # Exception Notifier
   # 
@@ -44,4 +44,4 @@ class PadrinoWww < Padrino::Application
   end # Helpers
 
   disable :padrino_mailer # disabled for a bug in padrino mailer in 0.9.3
-end # PadrinoWww
+end # PadrinoWeb
