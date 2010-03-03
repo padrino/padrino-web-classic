@@ -49,7 +49,7 @@ module Textile
             chapters = []
             html.gsub!(/(<h2>(.*)<\/h2>)/) do
               chapters << $2
-              "<a name=\"#{self.class.label_for($2)}\">&nbsp</a>\n" + $1
+              "<a name=\"#{self.class.label_for($2)}\">&nbsp;</a>\n" + $1
             end
             self.send("#{textile_field}_chapters=", chapters)
           end
