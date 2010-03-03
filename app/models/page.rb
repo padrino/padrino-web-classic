@@ -16,17 +16,20 @@ class Page
 
   timestamps!
 
-  before_save :generate_label
-  validate :label_present
+  # Callbacks
+  before_save  :generate_label
+  after_create :send_notification
+  before_save  :send_notification_changes
+  validate     :label_present
 
   def self.find_labeled(name)
     label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
-    first(:label_id => label.id) if label
+    first(:label_id => label.id, :draft => false) if label
   end
 
   def self.find_all_labeled(name)
     label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
-    label ? all(:label_id => label.id) : []
+    label ? all(:label_id => label.id, :draft => false) : []
   end
 
   private
@@ -37,6 +40,14 @@ class Page
     def generate_label
       return if label_name.blank?
       self.label_id = PageLabel.find_or_create_by_name(label_name).try(:id)
+    end
+
+    def send_notification
+      Notifier.deliver(:page_added, self) if defined?(Notifier) # not loaded in test!!
+    end
+
+    def send_notification_changes
+      Notifier.deliver(:page_edited, self) if defined?(Notifier) && !new? && (title_changed? || body_changed?)
     end
 end
 

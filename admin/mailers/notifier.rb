@@ -53,4 +53,17 @@ class Notifier < Padrino::Mailer::Base
     body :post => post
     content_type "text/html"
   end
+
+  def page_added(page)
+    to Account.all.collect(&:email)
+    subject "#{page.author.full_name} created a page #{page.title}"
+    body    :page => page
+  end
+
+  def page_edited(page)
+    to Account.all.collect(&:email)
+    subject "#{page.author.full_name} edited a page #{page.title}"
+    body :page => page
+    content_type "text/html"
+  end
 end

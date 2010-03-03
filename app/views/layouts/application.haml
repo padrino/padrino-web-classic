@@ -5,7 +5,7 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :name => "description", :content => description}
     %link{:href => url(:blog, :index, :format => :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
     =stylesheet_link_tag "reset", "text", "960", "highlighter", "padrino"
-    =javascript_include_tag "http://gettopup.com/releases/latest/top_up-min.js"
+    =javascript_include_tag "top_up"
     -if Padrino.env == :development
       %script{:type => "text/javascript"} var disqus_developer = 1;
   %body
@@ -17,7 +17,8 @@
             %li=link_to "HOME", url(:base, :index)
             %li=link_to "BLOG", url(:blog, :index)
             %li=link_to "GUIDES", url(:guides, :index)
-            %li=link_to "CODE", "http://www.github.com/padrino/padrino-framework", :target => :_blank
+            -Page.find_all_labeled(:menu).each do |page|
+              %li=link_to page.title.upcase, url(:pages, :show, :id => page)
         .clear
       .clear
       .grid_16

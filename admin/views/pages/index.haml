@@ -13,6 +13,7 @@
         %tr
           %th=mat(:page, :id)
           %th=mat(:page, :title)
+          %th=mat(:page, :label)
           %th=mat(:page, :link)
           %th=mat(:page, :draft)
           %th=mat(:page, :created_at)
@@ -21,6 +22,7 @@
           %tr
             %td=link_to page.id, url(:pages, :edit, :id => page.id)
             %td=link_to page.title, url(:pages, :edit, :id => page.id)
+            %td=link_to page.label.name, url(:pages, :edit, :id => page.id)
             %td=link_to PadrinoWeb.url(:pages, :show, :id => page), PadrinoWeb.url(:pages, :show, :id => page), :target => :_blank
             %td=link_to page.draft? ? "Yes" : "No", url(:pages, :edit, :id => page.id)
             %td=link_to l(page.updated_at, :format => :short), url(:pages, :edit, :id => page.id)
@@ -31,4 +33,5 @@
       .actions-bar.wat-cf
         .actions="&nbsp;"
 
--content_for :sidebar, partial("base/sidebar")
+-@hide_textitle = true
+-content_for :sidebar, partial("pages/sidebar")

@@ -1,6 +1,6 @@
 = TODO
 
-* Pages functionality (for editing site content mini-cms)
+* Add docs into admin ex in /admin/views/base/index.haml and in all sidebar
 * Search functionality in guies section
 * Extensions directory like railsplugins.org and http://coderack.org
 * Screencast section

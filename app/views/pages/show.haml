@@ -1,0 +1,11 @@
+.grid_12.alpha.margin-top
+  -if @page
+    -title @page.title
+    %h1=@page.title
+    .content~@page.body_formatted
+  -else
+    %h1 Page not found
+    .content The page requested is not available
+
+.grid_4.omega.margin-top=partial "pages/sidebar"
+.clear

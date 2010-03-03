@@ -1,0 +1,12 @@
+Hi,<br />
+<br />
+<%= page.author.full_name %> edited a page "<%= page.title %>"<br />
+<br />
+you can see it here: <%= Notifier.base_url %><%= PadrinoWeb.url(:pages, :show, :id => page) %><br />
+<br />
+<%= %w(title body).map { |key|
+    if diff = page.diff(key)
+      "<div style=\"font-weight:bold\">#{key.humanize}</div>" +
+      Albino.colorize(diff, :diff, :html, :linenos => :table, :noclasses => true)
+    end
+}.compact.join("\n") %>

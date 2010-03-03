@@ -1,0 +1,4 @@
+%h3 Pages
+%ul
+  -Page.find_all_labeled(:menu).each do |page|
+    %li=link_to page.title, url(:pages, :show, :id => page)

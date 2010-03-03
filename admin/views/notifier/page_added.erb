@@ -1,0 +1,9 @@
+Hi,
+
+<%= page.author.full_name %> created a page "<%= page.title %>"
+
+you can see it here: <%= Notifier.base_url %><%= PadrinoWeb.url(:pages, :show, :id => page) %>
+
+---
+Best Regards
+Padrino Team
