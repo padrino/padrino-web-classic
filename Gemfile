@@ -9,8 +9,8 @@ gem 'popen4'
 
 # Component requirements
 gem 'haml'
-gem 'mongo', '0.18.2'
-gem 'mongo_ext', '0.18.2', :require => nil
+gem 'mongo', '0.18.3'
+gem 'mongo_ext', '0.18.3', :require => nil
 gem 'mongo_mapper'
 gem 'diff-lcs',  :require => 'diff/lcs'
 
