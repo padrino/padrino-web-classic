@@ -87,7 +87,12 @@ describe "Guide Model" do
         Ut enim ad minim veniam, quis <a href="http://www.yes.org" class="special">nostrud</a> exercitation 
       HTML
       guide = @account.guides.create(:title => 'Foo Bar', :body => links)
-      guide.body_formatted.should == ""
+      guide.body_formatted.should =~ /<a href="http:\/\/padrinorb.com">adipisicing<\/a>/
+      guide.body_formatted.should =~ /<a href="http:\/\/external" target="_blank">/
+      guide.body_formatted.should =~ /<a href="http:\/\/www.padrinorb.org">nostrud<\/a>/
+      guide.body_formatted.should =~ /<a href="http:\/\/padrino.lipsiasoft.biz">aliquip<\/a>/
+      guide.body_formatted.should =~ /<a href="http:\/\/foo.local" target="custom">incididunt<\/a>/
+      guide.body_formatted.should =~ /<a href="http:\/\/www.yes.org" class="special" target="_blank">nostrud<\/a>/
     end
   end
 end
