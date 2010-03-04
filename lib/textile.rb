@@ -53,6 +53,11 @@ module Textile
             end
             self.send("#{textile_field}_chapters=", chapters)
           end
+          # Parse external links
+          html.gsub!(/(<a href="(.*?)".*?)(>.*?<\/a>)/) do |link|
+            tag_start, href, tag_end = $1, $2, $3
+            link =~ /target/ || href =~ /^http:\/\/(www\.)?padrino/ ? link : "#{tag_start} target=\"_blank\"#{tag_end}"
+          end
           # Parse internal links
           html.gsub!(/\[\[([^\]]+)\]\]/) do
             page, name = *$1.split("|") # this allow to rename link ex: [[Page Name|link me]]

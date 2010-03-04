@@ -10,16 +10,14 @@
     .inner
       %table.table
         %tr
-          %th=mat(:guide, :id)
-          %th=mat(:guide, :title)
+          %th.first=mat(:guide, :title)
           %th=mat(:guide, :link)
           %th=mat(:guide, :draft)
           %th=mat(:guide, :created_at)
           %th.last="&nbsp;"
         -@guides.each do |guide|
           %tr
-            %td=link_to guide.id, url(:guides, :edit, :id => guide.id)
-            %td=link_to guide.title, url(:guides, :edit, :id => guide.id)
+            %td.first=link_to guide.title, url(:guides, :edit, :id => guide.id)
             %td=link_to PadrinoWeb.url(:guides, :show, :id => guide), PadrinoWeb.url(:guides, :show, :id => guide), :target => :_blank
             %td=link_to guide.draft? ? "Yes" : "No", url(:guides, :edit, :id => guide.id)
             %td=link_to l(guide.updated_at, :format => :short), url(:guides, :edit, :id => guide.id)

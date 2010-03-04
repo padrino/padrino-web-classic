@@ -68,13 +68,26 @@ describe "Guide Model" do
 
     it 'parse correctly chapters' do
       guide = @account.guides.create(:title => 'Foo Bar', :body => 'h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
-      guide.body_formatted.should == "<a name=\"lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit\">&nbsp</a>\n<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>"
+      guide.body_formatted.should == "<a name=\"lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit\">&nbsp;</a>\n<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>"
     end
 
     it 'can generate a diff' do
       guide = @account.guides.create(:title => 'Foo Bar', :body => 'h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
       guide.body = "h3. foo"
       guide.diff(:body).should == "\n@@ -1,2 +1,2 @@\n-h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit\n+h3. foo\n"
+    end
+
+    it 'can apply correctly target blank' do
+      links = <<-HTML
+        Lorem ipsum dolor sit amet, consectetur <a href="http://padrinorb.com">adipisicing</a> elit, 
+        sed do eiusmod tempor <a href="http://external">incididunt</a> ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis <a href="http://www.padrinorb.org">nostrud</a> exercitation 
+        ullamco laboris nisi ut <a href="http://padrino.lipsiasoft.biz">aliquip</a> ex ea commodo consequat.
+        sed do eiusmod tempor <a href="http://foo.local" target="custom">incididunt</a> ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis <a href="http://www.yes.org" class="special">nostrud</a> exercitation 
+      HTML
+      guide = @account.guides.create(:title => 'Foo Bar', :body => links)
+      guide.body_formatted.should == ""
     end
   end
 end

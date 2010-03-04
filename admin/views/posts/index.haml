@@ -12,8 +12,7 @@
     .inner
       %table.table
         %tr
-          %th=mat(:post, :id)
-          %th=mat(:post, :title)
+          %th.first=mat(:post, :title)
           %th=mat(:post, :link)
           %th=mat(:post, :categories)
           %th=mat(:post, :tags)
@@ -22,8 +21,7 @@
           %th.last="&nbsp;"
         -@posts.each do |post|
           %tr
-            %td=link_to post.id, url(:posts, :edit, :id => post.id)
-            %td=link_to post.title, url(:posts, :edit, :id => post.id)
+            %td.first=link_to post.title, url(:posts, :edit, :id => post.id)
             %td=link_to PadrinoWeb.url(:blog, :show, :id => post), PadrinoWeb.url(:blog, :show, :id => post), :target => :_blank
             %td=link_to post.categories.map(&:name).join(", "), url(:posts, :edit, :id => post.id)
             %td=link_to post.tags, url(:posts, :edit, :id => post.id)
