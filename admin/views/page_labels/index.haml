@@ -16,8 +16,8 @@
           %th.last="&nbsp;"
         -@page_labels.each do |page_label|
           %tr
-            %td.first=link_to page_label.name, url(:page_labels, :edit, :id => page_label.id)
-            %td=link_to page_label.description, url(:page_labels, :edit, :id => page_label.id)
+            %td.first=page_label.name
+            %td=page_label.description
             %td.last
               =button_to pat(:edit), url(:page_labels, :edit, :id => page_label.id), :method => :get, :class => :button_to 
               ="|"

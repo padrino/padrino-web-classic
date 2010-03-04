@@ -21,12 +21,12 @@
           %th.last="&nbsp;"
         -@posts.each do |post|
           %tr
-            %td.first=link_to post.title, url(:posts, :edit, :id => post.id)
+            %td.first=post.title
             %td=link_to PadrinoWeb.url(:blog, :show, :id => post), PadrinoWeb.url(:blog, :show, :id => post), :target => :_blank
-            %td=link_to post.categories.map(&:name).join(", "), url(:posts, :edit, :id => post.id)
-            %td=link_to post.tags, url(:posts, :edit, :id => post.id)
-            %td=link_to post.draft? ? "Yes" : "No", url(:posts, :edit, :id => post.id)
-            %td=link_to l(post.updated_at, :format => :short), url(:posts, :edit, :id => post.id)
+            %td=post.categories.map(&:name).join(", ")
+            %td=post.tags
+            %td=post.draft? ? "Yes" : "No"
+            %td=l(post.updated_at, :format => :short)
             %td.last
               =button_to pat(:edit), url(:posts, :edit, :id => post.id), :method => :get, :class => :button_to 
               ="|"
