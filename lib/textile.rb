@@ -49,9 +49,14 @@ module Textile
             chapters = []
             html.gsub!(/(<h2>(.*)<\/h2>)/) do
               chapters << $2
-              "<a name=\"#{self.class.label_for($2)}\">&nbsp</a>\n" + $1
+              "<a name=\"#{self.class.label_for($2)}\">&nbsp;</a>\n" + $1
             end
             self.send("#{textile_field}_chapters=", chapters)
+          end
+          # Parse external links
+          html.gsub!(/(<a href="(.*?)".*?)(>.*?<\/a>)/) do |link|
+            tag_start, href, tag_end = $1, $2, $3
+            link =~ /target/ || href =~ /^http:\/\/(www\.)?padrino/ ? link : "#{tag_start} target=\"_blank\"#{tag_end}"
           end
           # Parse internal links
           html.gsub!(/\[\[([^\]]+)\]\]/) do

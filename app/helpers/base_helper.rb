@@ -11,7 +11,7 @@ PadrinoWeb.helpers do
 
   def description(text=nil)
     @_description = text if text.present?
-    @_description || (<<-TXT).gsub(/ {8}/, '')
+    @_description || (<<-TXT).gsub(/ {6}|\n/, '')
       Padrino is a ruby framework built upon the excellent Sinatra Microframework.
       This framework tries hard to make it as fun and easy as possible to code much more advanced web
       applications by building upon the Sinatra philosophies and foundation.

@@ -1,26 +1,10 @@
 .block
   %h3 Labels
   .content
-    %p
-      %b Menu
-      for show the page in top menu
-    %p
-      %b Home
-      display text in home
-    %p
-      %b Home Feature
-      display features in home
-    %p
-      %b Home Code
-      display example code in home
-    %p
-      %b Home Admin
-      display slogan on padrino screen
-    %p
-      %b Home Slogan
-      display slogan in home
-    %p
-      %b Home Mic
-      display a text in home near mic img
+    -PageLabel.all.each do |label|
+      %p
+        %b=label.name 
+        =":"
+        =label.description
 
 =partial('base/textile') unless @hide_textitle

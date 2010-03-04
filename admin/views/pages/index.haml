@@ -11,8 +11,7 @@
     .inner
       %table.table
         %tr
-          %th=mat(:page, :id)
-          %th=mat(:page, :title)
+          %th.first=mat(:page, :title)
           %th=mat(:page, :label)
           %th=mat(:page, :link)
           %th=mat(:page, :draft)
@@ -20,12 +19,11 @@
           %th.last="&nbsp;"
         -@pages.each do |page|
           %tr
-            %td=link_to page.id, url(:pages, :edit, :id => page.id)
-            %td=link_to page.title, url(:pages, :edit, :id => page.id)
-            %td=link_to page.label.name, url(:pages, :edit, :id => page.id)
+            %td.first=page.title
+            %td=page.label.name
             %td=link_to PadrinoWeb.url(:pages, :show, :id => page), PadrinoWeb.url(:pages, :show, :id => page), :target => :_blank
-            %td=link_to page.draft? ? "Yes" : "No", url(:pages, :edit, :id => page.id)
-            %td=link_to l(page.updated_at, :format => :short), url(:pages, :edit, :id => page.id)
+            %td=page.draft? ? "Yes" : "No"
+            %td=l(page.updated_at, :format => :short)
             %td.last
               =button_to pat(:edit), url(:pages, :edit, :id => page.id), :method => :get, :class => :button_to 
               ="|"
