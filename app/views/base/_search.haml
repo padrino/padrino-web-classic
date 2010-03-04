@@ -1,0 +1,12 @@
+-form_tag where, :method => :get do
+  .l
+    =text_field_tag :q, :value => params[:q], :class => :text_field, :style => "width:88px"
+    =submit_tag "Search", :class => :button
+  -if params[:q] && params[:q].size > 0 && params[:q].size < 4
+    %em Write at least 4 chars
+  -if @search
+    %em
+      Matches is
+      %strong.highlight highlighted
+
+%br

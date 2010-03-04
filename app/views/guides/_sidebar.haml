@@ -1,3 +1,5 @@
+=partial('base/search', :locals => { :where => url(:guides, :search) })
+
 -if @guide && @guide.body_chapters.present?
   %h3 Chapters
   %ul

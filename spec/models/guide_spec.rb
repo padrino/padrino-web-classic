@@ -95,4 +95,23 @@ describe "Guide Model" do
       guide.body_formatted.should =~ /<a href="http:\/\/www.yes.org" class="special" target="_blank">nostrud<\/a>/
     end
   end
+
+  context 'search' do
+    before do
+      @guide_one   = @account.guides.create(:title => "One", :body => "One body", :label_name => "Foo")
+      @guide_two   = @account.guides.create(:title => "Two", :body => "Two body", :label_name => "Foo")
+      @guide_three = @account.guides.create(:title => "Three", :body => "Three body", :label_name => "Foo")
+    end
+
+    it 'perform basic searches' do
+      Guide.search("one").should == [@guide_one]
+      Guide.search("two").should == [@guide_two]
+      Guide.search("three").should == [@guide_three]
+      Guide.search("body").should include(@guide_one, @guide_two, @guide_three)
+    end
+
+    it 'paginate correctly' do
+      Guide.search("one", :paginate => true, :per_page => 1).should == [@guide_one]
+    end
+  end
 end

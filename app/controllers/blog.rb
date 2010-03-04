@@ -1,20 +1,14 @@
 PadrinoWeb.controllers :blog do
 
-  get :index, :map => "/blog", :respond_to => [:html, :rss] do
-    case content_type
-      when :html
-        options = { :order => "created_at desc", :page => (params[:page] || 1), :draft => false }
-        if params[:q].present? && params[:q].size > 3
-          re = Regexp.new(Regexp.escape(params[:q]), 'i').to_json
-          options.merge!("$where" => "this.title.match(#{re}) || this.summary.match(#{re}) || this.body.match(#{re})")
-          @search = params[:q]
-        end
-        @posts = Post.paginate(options)
-        render 'blog/index'
-      when :rss
-        @posts = Post.all(:limit => 10, :draft => false, :order => "created_at desc")
-        render 'blog/rss'
-    end
+  get :index, :map => "/blog" do
+    @search = params[:q] if params[:q] && params[:q].size >= 4
+    @posts  = Post.search(@search, :order => "created_at desc", :page => (params[:page] || 1), :draft => false, :paginate => true)
+    render 'blog/index'
+  end
+
+  get :rss, :map => "/blog.rss" do
+    @posts = Post.all(:limit => 10, :draft => false, :order => "created_at desc")
+    render 'blog/rss'
   end
 
   get :show, :with => :id, :map => "/blog" do

@@ -1,10 +1,6 @@
 = TODO
 
 * Add docs into admin ex in /admin/views/base/index.haml and in all sidebar
-* Search functionality in guies section
 * Extensions directory like railsplugins.org and http://coderack.org
-* Screencast section
-* Some admin docs
 * Multi-language
 * Padrino Book
-* Improved stylesheets

@@ -18,12 +18,13 @@ PadrinoWeb.helpers do
     TXT
   end
 
-  def paginate_posts(collection)
-    if collection.total_pages > Post.per_page
+  def paginate(collection, controller, action)
+    return if collection.empty?
+    if collection.total_pages > collection.per_page
       html = 'Pages: ' + 1.upto(collection.total_pages).map { |i|
         options = { :page => i }
         options.merge!(:q => params[:q]) if params[:q].present?
-        link_to(i, url(:blog, :index, options), :class => (params[:page].to_i == i ? :current : :page))
+        link_to(i, url(controller, action, options), :class => (params[:page].to_i == i ? :current : :page))
       }.join
     end
   end

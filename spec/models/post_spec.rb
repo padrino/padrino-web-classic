@@ -85,8 +85,8 @@ describe "Post Model" do
     end
   end
 
-  context "categories" do
-    it "associate correctly categories" do
+  context 'categories' do
+    it 'associate correctly categories' do
       categories = %w(press news ruby).map { |name| Category.create(:name => name) }
       post = @account.posts.create(:title => 'Last News', :summary => "Last news")
       post.should_not be_nil
@@ -96,6 +96,26 @@ describe "Post Model" do
       post = @account.posts.create(:title => 'Last Blog News', :summary => "Last blog news", :category_ids => categories.map(&:id).flatten)
       post.should_not be_nil
       post.categories.should == categories
+    end
+  end
+
+  context 'search' do
+    before do
+      @post_one   = @account.posts.create(:title => "One", :summary => "One summary", :body => "One body")
+      @post_two   = @account.posts.create(:title => "Two", :summary => "Two summary", :body => "Two body")
+      @post_three = @account.posts.create(:title => "Three", :summary => "Three summary", :body => "Three body")
+    end
+
+    it 'perform basic searches' do
+      Post.search("one").should == [@post_one]
+      Post.search("two").should == [@post_two]
+      Post.search("three").should == [@post_three]
+      Post.search("body").should include(@post_one, @post_two, @post_three)
+      Post.search("summary").should include(@post_one, @post_two, @post_three)
+    end
+
+    it 'paginate correctly' do
+      Post.search("one", :paginate => true, :per_page => 1).should == [@post_one]
     end
   end
 end

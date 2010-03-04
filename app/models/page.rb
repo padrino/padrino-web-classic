@@ -12,7 +12,8 @@ class Page
   belongs_to :label,  :class_name => "PageLabel", :foreign_key => "label_id"
 
   has_permalink :title
-  has_textile :body, :internal_links => :pages
+  has_textile   :body,  :internal_links => :pages
+  has_search    :title, :body
 
   timestamps!
 
@@ -21,6 +22,8 @@ class Page
   after_create :send_notification
   before_save  :send_notification_changes
   validate     :label_present
+
+  def self.per_page; 10; end
 
   def self.find_labeled(name)
     label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")

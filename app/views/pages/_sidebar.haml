@@ -1,3 +1,5 @@
+=partial('base/search', :locals => { :where => url(:pages, :search) })
+
 %h3 Pages
 %ul
   -Page.find_all_labeled(:menu).each do |page|

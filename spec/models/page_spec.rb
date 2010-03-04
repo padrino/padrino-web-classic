@@ -121,4 +121,23 @@ describe "Page Model" do
       page.label.name.should == 'zar'
     end
   end
+
+  context 'search' do
+    before do
+      @page_one   = @account.pages.create(:title => "One", :body => "One body", :label_name => "Foo")
+      @page_two   = @account.pages.create(:title => "Two", :body => "Two body", :label_name => "Foo")
+      @page_three = @account.pages.create(:title => "Three", :body => "Three body", :label_name => "Foo")
+    end
+
+    it 'perform basic searches' do
+      Page.search("one").should == [@page_one]
+      Page.search("two").should == [@page_two]
+      Page.search("three").should == [@page_three]
+      Page.search("body").should include(@page_one, @page_two, @page_three)
+    end
+
+    it 'paginate correctly' do
+      Page.search("one", :paginate => true, :per_page => 1).should == [@page_one]
+    end
+  end
 end

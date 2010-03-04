@@ -1,0 +1,15 @@
+-title "Guides"
+.grid_12.alpha.margin-top
+  -if @guides.blank?
+    %h1 No Guides Found
+    .content The guide requested is not available
+  -else
+    -@guides.each_with_index do |guide, i|
+      %h1{:class => ("border-top" if i!=0)}
+        =link_to highlight(guide.title, @search), url(:guides, :show, :id => guide), :unless => guide.body.blank?
+      .content=truncate highlight(guide.body_formatted.gsub(/<\/?[^>]*>/, ''), @search), :length => 355
+      .align-right=link_to "Continue reading", url(:guides, :show, :id => guide)
+    .pagination=paginate(@guides, :guides, :search)
+
+.grid_4.omega.margin-top=partial "guides/sidebar"
+.clear

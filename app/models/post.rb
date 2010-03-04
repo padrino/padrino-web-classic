@@ -13,7 +13,8 @@ class Post
   many :categories, :in => :category_ids
 
   has_permalink :title
-  has_textile :summary, :body
+  has_textile   :summary, :body
+  has_search    :title, :summary, :body
 
   timestamps!
 

@@ -3,7 +3,7 @@
   %head
     %title=title
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :name => "description", :content => description}
-    %link{:href => url(:blog, :index, :format => :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
+    %link{:href => url(:blog, :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
     =stylesheet_link_tag "reset", "text", "960", "highlighter", "padrino"
     =javascript_include_tag "top_up"
     -if Padrino.env == :development

@@ -10,13 +10,16 @@ class Guide
   belongs_to :author, :class_name => "Account", :foreign_key => "author_id"
 
   has_permalink :title
-  has_textile :body, :chapters => true, :internal_links => :guides
+  has_textile   :body,  :chapters => true, :internal_links => :guides
+  has_search    :title, :body
 
   timestamps!
 
   # Callbacks
   after_create :send_notification
   before_save  :send_notification_changes
+
+  def self.per_page; 10; end
 
   private
     def send_notification
