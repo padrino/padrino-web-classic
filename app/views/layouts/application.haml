@@ -17,7 +17,7 @@
             %li=link_to "HOME", url(:base, :index)
             %li=link_to "BLOG", url(:blog, :index)
             %li=link_to "GUIDES", url(:guides, :index)
-            %li=link_to "CODE", "http://github.com/padrino/padrino-framework"
+            %li=link_to "CODE", "http://github.com/padrino/padrino-framework", :target => :_blank
             -Page.find_all_labeled(:menu).each do |page|
               %li=link_to page.title.upcase, url(:pages, :show, :id => page)
         .clear
