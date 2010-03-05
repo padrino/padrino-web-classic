@@ -15,7 +15,7 @@ describe "Category Model" do
   end
 
   it 'have some posts' do
-    account = Account.first || Account.create(:email => "foo@bar.it", :password => "foobar", :password_confirmation => "foobar")
+    account = Account.first || Account.create(:email => "foo@bar.it", :password => "foobar", :role => 'admin', :password_confirmation => "foobar")
     category = Category.create(:name => 'Foo')
     category.posts.should be_empty
     post = Post.create(:title => 'Foo Bar', :summary => 'Foo Bar', :author_id => account.id)

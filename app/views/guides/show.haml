@@ -2,7 +2,7 @@
   -if @guide
     -title @guide.title
     %h1=@guide.title
-    .content~@guide.body_formatted
+    .content~@guide.body_html
     #disqus_thread
     %script{ :type => "text/javascript", :src => "http://disqus.com/forums/padrinorb/embed.js" }
     %noscript

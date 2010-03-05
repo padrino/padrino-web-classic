@@ -3,8 +3,8 @@
   %p
     %h1=@post.title
     .content
-      ~@post.summary_formatted
-      ~@post.body_formatted
+      ~@post.summary_html
+      ~@post.body_html
     #disqus_thread
     %script{ :type => "text/javascript", :src => "http://disqus.com/forums/padrinorb/embed.js" }
     %noscript

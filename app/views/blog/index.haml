@@ -7,7 +7,7 @@
     -@posts.each_with_index do |post, i|
       %h1{:class => ("border-top" if i!=0)}
         =link_to highlight(post.title, @search), url(:blog, :show, :id => post), :unless => post.body.blank?
-      .content~highlight(post.summary_formatted, @search)
+      .content~highlight(post.summary_html, @search)
       .align-right
         Posted in
         =post.categories.map(&:name).join(", ")

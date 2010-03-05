@@ -2,7 +2,7 @@
 %h1.slogan=Page.find_labeled(:home_slogan).try(:body)
 
 .grid_6.alpha.margin-top=image_tag("glass.png", :alt => "Padrino Ruby Framework")
-.grid_6.margin-top~Page.find_labeled(:home_code).try(:body_formatted)
+.grid_6.margin-top~Page.find_labeled(:home_code).try(:body_html)
 .grid_4.omega
   %ul.features
     -Page.find_all_labeled(:home_feature).each_with_index do |feature, i|
@@ -12,20 +12,20 @@
 -Page.find_all_labeled(:home_feature).each do |feature|
   .feature{:id => feature.id, :style => "display:none"}
     %h3=feature.title
-    ~feature.body_formatted
+    ~feature.body_html
 
 .screens
   =link_to image_tag("screens.jpg", :alt => "Admin"), image_path("login.png"), :toptions => "effect = appear, group = screenshoots", :class => :top_up
-  =Page.find_labeled(:home_admin).try(:body_formatted)
+  =Page.find_labeled(:home_admin).try(:body_html)
 
 =link_to image_tag("dashboard.png", :alt => "Dashboard Page"), image_path("dashboard.png"), :toptions => "effect = appear, group = screenshoots", :style => "display:none"
 =link_to image_tag("index.png", :alt => "Index Page"), image_path("index.png"), :toptions => "effect = appear, group = screenshoots", :style => "display:none"
 
-.margin-top~Page.find_labeled(:home).try(:body_formatted)
+.margin-top~Page.find_labeled(:home).try(:body_html)
 
 .grid_5.alpha.margin-top
   %br
   %br
   =image_tag("mic.png", :alt => "mic")
-.grid_11.omega.margin-top~Page.find_labeled(:home_mic).try(:body_formatted)
+.grid_11.omega.margin-top~Page.find_labeled(:home_mic).try(:body_html)
 .clear

@@ -12,7 +12,7 @@ xml.rss("version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/") do
         xml.title post.title
         xml.link url(:blog, :show, :id => post)
         xml.guid post.id
-        xml.description post.body_formatted
+        xml.description post.body_html
       end
     end
   end

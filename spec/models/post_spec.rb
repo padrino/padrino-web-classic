@@ -4,7 +4,7 @@ describe "Post Model" do
 
   before do
     Post.collection.remove
-    @account = Account.first || Account.create(:email => "foo@bar.it", :password => "foobar", :password_confirmation => "foobar")
+    @account = Account.first || Account.create(:email => "foo@bar.it", :password => "foobar", :password_confirmation => "foobar", :role => 'admin')
   end
 
   it 'not create a post without title' do
@@ -45,43 +45,43 @@ describe "Post Model" do
   context 'textile' do
     it 'create correctly the textile formatted for body' do
       post = @account.posts.create(:title => 'Foo Bar', :summary => 'foo', :body => 'h1. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
-      post.body_formatted.should == '<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>'
+      post.body_html.should == '<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>'
     end
 
     it 'create correctly the textile formatted for summary' do
       post = @account.posts.create(:title => 'Foo Bar', :summary => 'h1. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
-      post.summary_formatted.should == '<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>'
+      post.summary_html.should == '<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>'
     end
 
     it 'create correctly internal links' do
       linked = @account.posts.create(:title => 'Linked Page', :summary => 'Im the linked page')
       linker = @account.posts.create(:title => 'Linker', :summary => 'I should link to [[Linked Page]]')
-      linker.summary_formatted.should == '<p>I should link to <a href="/blog/linked-page">Linked Page</a></p>'
+      linker.summary_html.should == '<p>I should link to <a href="/blog/linked-page">Linked Page</a></p>'
     end
 
     it 'create correctly named internal links' do
       linked = @account.posts.create(:title => 'Linked Page', :summary => 'Im the linked page')
       linker = @account.posts.create(:title => 'Linker', :summary => 'I should link to [[Linked Page|Custom Name]]')
-      linker.summary_formatted.should == '<p>I should link to <a href="/blog/linked-page">Custom Name</a></p>'
+      linker.summary_html.should == '<p>I should link to <a href="/blog/linked-page">Custom Name</a></p>'
     end
 
     it 'not parse pre without lang' do
       post = @account.posts.create(:title => 'Foo Bar', :summary => '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
-      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
+      post.summary_html.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
     end
 
     it 'parse correctly pre with lang' do
       post = @account.posts.create(:title => 'Foo Bar', :summary => '<pre lang="ruby">Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
-      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
+      post.summary_html.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
       post = @account.posts.create(:title => 'Foo Baz', :summary => 'pre[ruby]. Lorem ipsum dolor sit amet, consectetur adipisicing elit')
-      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
+      post.summary_html.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
       post = @account.posts.create(:title => 'Foo Bag', :summary => '<pre lang="ruby"><code>Lorem ipsum dolor sit amet, consectetur adipisicing elit</code></pre>')
-      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
+      post.summary_html.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
     end
 
     it 'parse correctly without lang' do
       post = @account.posts.create(:title => 'Foo Bar', :summary => '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>')
-      post.summary_formatted.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
+      post.summary_html.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
     end
   end
 
