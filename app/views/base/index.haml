@@ -16,6 +16,7 @@
 
 .screens
   =link_to image_tag("screens.jpg", :alt => "Admin"), image_path("login.png"), :toptions => "effect = appear, group = screenshoots", :class => :top_up
+  %br
   =Page.find_labeled(:home_admin).try(:body_html)
 
 =link_to image_tag("dashboard.png", :alt => "Dashboard Page"), image_path("dashboard.png"), :toptions => "effect = appear, group = screenshoots", :style => "display:none"
