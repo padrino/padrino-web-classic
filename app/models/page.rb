@@ -12,7 +12,7 @@ class Page
   belongs_to :label,  :class_name => "PageLabel", :foreign_key => "label_id"
 
   has_permalink :title
-  has_textile   :body,  :internal_links => :pages
+  has_textile   :body,  :chapters => true, :internal_links => :pages
   has_search    :title, :body
 
   timestamps!

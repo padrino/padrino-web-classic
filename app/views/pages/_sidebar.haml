@@ -1,5 +1,11 @@
 =partial('base/search', :locals => { :where => url(:pages, :search) })
 
+-if @page && @page.body_chapters.present?
+  %h3 Chapters
+  %ul
+    -@page.body_chapters.each do |chapter|
+      %li=link_to chapter, :anchor => Page.label_for(chapter)
+
 %h3 Pages
 %ul
   -Page.find_all_labeled(:menu).each do |page|

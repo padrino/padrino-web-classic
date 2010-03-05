@@ -77,6 +77,11 @@ describe "Page Model" do
       page.body = "h3. foo"
       page.diff(:body).should == "\n@@ -1,2 +1,2 @@\n-h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit\n+h3. foo\n"
     end
+
+    it 'parse correctly chapters' do
+      page = @account.pages.create(:title => 'Foo Bar', :body => 'h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit', :label_id => @label.id)
+      page.body_formatted.should == "<a name=\"lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit\">&nbsp;</a>\n<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>"
+    end
   end
 
   context 'label' do
