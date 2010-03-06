@@ -1,4 +1,4 @@
-.padrino-syntax{background-color:#FFF;color:#6B9CB8;padding:3px 5px;overflow:auto;font-size:12px;}
+.padrino-syntax{background-color:#FFF;color:#6B9CB8;padding:3px 5px 0px 0px;overflow:auto;font-size:12px;}
 .padrino-syntax pre{font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier','Terminal',monospace; margin-bottom:5px;}
 .padrino-syntax .c{color:#998;font-style:italic;}
 .padrino-syntax .err{color:#a61717;background-color:#e3d2d2;}
