@@ -1,8 +1,8 @@
 -title "The Ruby Framework for Artists"
 %h1.slogan=Page.find_labeled(:home_slogan).try(:body)
 
-.grid_6.alpha.margin-top=image_tag("glass.png", :alt => "Padrino Ruby Framework")
-.grid_6.margin-top~Page.find_labeled(:home_code).try(:body_html)
+.grid_5.alpha.margin-top=image_tag("glass.png", :alt => "Padrino Ruby Framework", :height => 161)
+.grid_7.margin-top~Page.find_labeled(:home_code).try(:body_html)
 .grid_4.omega
   %ul.features
     -Page.find_all_labeled(:home_feature).each_with_index do |feature, i|
@@ -15,7 +15,7 @@
     ~feature.body_html
 
 .screens
-  =link_to image_tag("screens.jpg", :alt => "Admin"), image_path("login.png"), :toptions => "effect = appear, group = screenshoots", :class => :top_up
+  =link_to image_tag("screens.jpg", :alt => "Padrino Admin", :height => 302), image_path("login.png"), :toptions => "effect = appear, group = screenshoots", :class => :top_up
   %br
   =Page.find_labeled(:home_admin).try(:body_html)
 
