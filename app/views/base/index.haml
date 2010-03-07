@@ -1,4 +1,4 @@
--title "The Ruby Framework for Artists"
+-title Page.find_labeled(:home_slogan).try(:body)
 %h1.slogan=Page.find_labeled(:home_slogan).try(:body)
 
 .grid_6.alpha.margin-top=image_tag("glass.png", :alt => "Padrino Ruby Framework", :height => 161)
