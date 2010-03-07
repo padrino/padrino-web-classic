@@ -34,8 +34,8 @@ h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
 .align-right{text-align:right;}
 .text_field{border:1px solid #3D3D3D;padding:5px;}
 .button{border:1px solid #3D3D3D;color:#DFDAD9;background-color:#333333;text-align:center;width:64px;height:25px;cursor:pointer;}
-.search_field{float:left;width:146px;border:1px solid #3D3D3D;height:21px;}
-.search_button{float:right;border:1px solid #3D3D3D;color:#DFDAD9;background-color:#333333;text-align:center;width:64px;height:25px;cursor:pointer;}
+.search_field{float:left;width:140px;border:1px solid #3D3D3D;padding:5px;font-size:12px;margin:0px;}
+.search_button{float:right;border:1px solid #3D3D3D;color:#DFDAD9;background-color:#333333;text-align:center;width:64px;height:27px;cursor:pointer;}
 .border-top{border-top:4px solid #CFCFCF;margin-top:10px;padding-top:10px;height:100%;}
 .pagination{text-align:right;margin-top:20px;}
 .pagination .page{border:1px solid #222222;padding:0px 5px 0px 5px;margin-left:3px;}

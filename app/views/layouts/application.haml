@@ -22,8 +22,8 @@
               %li=link_to page.title.upcase, url(:pages, :show, :id => page)
         .clear
       .clear
-      .grid_16
-        =yield
+      .grid_16=yield
+      .clear
       #footer.grid_16
         Padrino is released under the 
         =link_to "MIT LICENSE", "http://en.wikipedia.org/wiki/MIT_License", :target => :_blank
@@ -36,9 +36,9 @@
         var links = document.getElementsByTagName('a');
         var query = '?';
         for(var i = 0; i < links.length; i++) {
-        if(links[i].href.indexOf('#disqus_thread') >= 0) {
-          query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-        }
+          if(links[i].href.indexOf('#disqus_thread') >= 0) {
+            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+          }
         }
         document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/padrinorb/get_num_replies.js' + query + '"></' + 'script>');
       })();
