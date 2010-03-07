@@ -1,6 +1,7 @@
 source :gemcutter
 
 # Project requirements
+gem 'sinatra', '1.0.b'
 gem 'rack-flash'
 gem 'thin' # or mongrel
 gem 'RedCloth'

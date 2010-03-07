@@ -25,11 +25,18 @@
       .grid_16=yield
       .clear
       #footer.grid_16
-        Padrino is released under the 
-        =link_to "MIT LICENSE", "http://en.wikipedia.org/wiki/MIT_License", :target => :_blank
-        ="-"
-        Hosting by
-        =link_to "LipsiaSOFT s.r.l.", "http://www.lipsiasoft.com"
+        .left
+          Running Padrino v.
+          =Padrino.version
+          on Sinatra v.
+          =Sinatra::VERSION
+        .right
+          Padrino is released under the 
+          =link_to "MIT LICENSE", "http://en.wikipedia.org/wiki/MIT_License", :target => :_blank
+          ="-"
+          Hosting by
+          =link_to "LipsiaSOFT s.r.l.", "http://www.lipsiasoft.com"
+        .clear
       .clear
     :javascript
       (function() {
