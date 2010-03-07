@@ -1,7 +1,8 @@
 -form_tag where, :method => :get do
   .align-right
-    =text_field_tag :q, :value => params[:q], :class => :text_field, :style => "width:140px"
-    =submit_tag "Search", :class => :button
+    =text_field_tag :q, :value => params[:q], :class => :search_field
+    =submit_tag "Search", :class => :search_button
+    .clear
   -if params[:q] && params[:q].size > 0 && params[:q].size < 4
     %em Write at least 4 chars
   -if @search
