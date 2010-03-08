@@ -7,7 +7,7 @@
     -@guides.each_with_index do |guide, i|
       %h1{:class => ("border-top" if i!=0)}
         =link_to highlight(guide.title, @search), url(:guides, :show, :id => guide), :unless => guide.body.blank?
-      .content=truncate highlight(guide.body_html.gsub(/<\/?[^>]*>/, ''), @search), :length => 355
+      .content=highlight truncate(guide.body_html.gsub(/<\/?[^>]*>/, ''), :length => 355), @search
       .align-right=link_to "Continue Reading", url(:guides, :show, :id => guide)
     .pagination=paginate(@guides, :guides, :search)
 
