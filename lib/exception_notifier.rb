@@ -37,5 +37,10 @@ module ExceptionNotifier
       content_type 'text/html', :charset => "utf-8"
       render options.exceptions_page
     end
+    app.error 404 do
+      response.status = 404
+      content_type 'text/html', :charset => "utf-8"
+      render options.exceptions_page
+    end
   end
 end
