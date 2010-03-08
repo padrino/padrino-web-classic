@@ -85,6 +85,7 @@ describe "Guide Model" do
         ullamco laboris nisi ut <a href="http://padrino.lipsiasoft.biz">aliquip</a> ex ea commodo consequat.
         sed do eiusmod tempor <a href="http://foo.local" target="custom">incididunt</a> ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis <a href="http://www.yes.org" class="special">nostrud</a> exercitation 
+        Lorem ipsum dolor sit amet, consectetur <a href="/internal/page">adipisicing</a> elit, 
       HTML
       guide = @account.guides.create(:title => 'Foo Bar', :body => links)
       guide.body_html.should =~ /<a href="http:\/\/padrinorb.com">adipisicing<\/a>/
@@ -93,6 +94,7 @@ describe "Guide Model" do
       guide.body_html.should =~ /<a href="http:\/\/padrino.lipsiasoft.biz">aliquip<\/a>/
       guide.body_html.should =~ /<a href="http:\/\/foo.local" target="custom">incididunt<\/a>/
       guide.body_html.should =~ /<a href="http:\/\/www.yes.org" class="special" target="_blank">nostrud<\/a>/
+      guide.body_html.should =~ /<a href="\/internal\/page">adipisicing<\/a>/
     end
   end
 
