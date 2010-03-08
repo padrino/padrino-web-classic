@@ -6,7 +6,7 @@
 .grid_4.omega
   %ul.features
     -Page.find_all_labeled(:home_feature).each_with_index do |feature, i|
-      %li=link_to feature.title.upcase, :anchor => feature.id, :toptions => "width=600, type=dom, resizable=0, effect=show", :class => (:alternate if i%2==0)
+      %li=link_to feature.title.upcase, :anchor => feature.id, :toptions => "width=750, type=dom, resizable=0, effect=show", :class => (:alternate if i%2==0)
 .clear
 
 -Page.find_all_labeled(:home_feature).each do |feature|
