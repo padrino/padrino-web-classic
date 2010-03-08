@@ -8,7 +8,7 @@
       %h1{:class => ("border-top" if i!=0)}
         =link_to highlight(guide.title, @search), url(:guides, :show, :id => guide), :unless => guide.body.blank?
       .content=truncate highlight(guide.body_html.gsub(/<\/?[^>]*>/, ''), @search), :length => 355
-      .align-right=link_to "Continue reading", url(:guides, :show, :id => guide)
+      .align-right=link_to "Continue Reading", url(:guides, :show, :id => guide)
     .pagination=paginate(@guides, :guides, :search)
 
 .grid_4.omega.margin-top=partial "guides/sidebar"
