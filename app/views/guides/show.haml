@@ -1,6 +1,7 @@
 .grid_12.alpha.margin-top
   -if @guide
-    -title @guide.title
+    -title "Guides", @guide.title
+    -description @guide.body_html
     %h1=@guide.title
     .content~@guide.body_html
     #disqus_thread

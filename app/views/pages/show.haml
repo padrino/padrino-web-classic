@@ -1,6 +1,7 @@
 .grid_12.alpha.margin-top
   -if @page
     -title @page.title
+    -description @page.body_html
     %h1=@page.title
     .content~@page.body_html
   -else

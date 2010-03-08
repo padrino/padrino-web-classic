@@ -1,7 +1,7 @@
 # Helper methods defined here can be accessed in any controller or view in the application
 PadrinoWeb.helpers do
   def key_density(*words)
-    words.join(" - ").concat(" - Padrino - Ruby Framework").gsub(/^ - /, '')
+    words.join(" ").concat(" - Padrino Ruby Web Framework").gsub(/^ - /, '')
   end
 
   def title(*words)
@@ -10,8 +10,8 @@ PadrinoWeb.helpers do
   end
 
   def description(text=nil)
-    @_description = text if text.present?
-    @_description || (<<-TXT).gsub(/ {6}|\n/, '')
+    @_description = truncate(text.gsub(/<\/?[^>]*>/, '').gsub(/\n/, ' ').strip, :length => 355) if text.present?
+    @_description || (<<-TXT).gsub(/ {6}/, '').gsub(/\n/, ' ').strip
       Padrino is a ruby framework built upon the excellent Sinatra Microframework.
       This framework tries hard to make it as fun and easy as possible to code much more advanced web
       applications by building upon the Sinatra philosophies and foundation.
