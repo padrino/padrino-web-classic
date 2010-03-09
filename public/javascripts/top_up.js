@@ -1126,8 +1126,8 @@ TopUp = (function() {
     version: "1.7.1",
     jquery: null,
     host: scriptHost,
-    images_path: "images/top_up/",
-    players_path: "players/",
+    images_path: "/images/top_up/",
+    players_path: "/players/",
     data: data,
     init: function() {
       if (initialized) {
