@@ -6,11 +6,11 @@
 .grid_4.omega
   %ul.features
     -Page.find_all_labeled(:home_feature).each_with_index do |feature, i|
-      %li=link_to feature.title.upcase, :anchor => feature.id, :toptions => "width=650, type=dom, resizable=0, effect=show", :class => (:alternate if i%2==0)
+      %li=link_to feature.title.upcase, :anchor => "feature-#{feature.id}", :toptions => "width=650, type=dom, resizable=0, effect=show", :class => (:alternate if i%2==0)
 .clear
 
 -Page.find_all_labeled(:home_feature).each do |feature|
-  .feature{:id => feature.id, :style => "display:none"}
+  .feature{:id => "feature-#{feature.id}", :style => "display:none"}
     %h3=feature.title
     ~feature.body_html
 
