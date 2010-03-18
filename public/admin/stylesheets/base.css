@@ -91,4 +91,5 @@ ul.list li .item .avatar{float:left;margin:0 5px 5px 0;width:30px;height:30px;}
 #box .block h2{padding:10px 15px;margin:0;}
 #box .block .content{padding:10px 20px;}
 /* custom */
+.content.textile{height:600px;overflow-y:auto;}
 .code{font-family: Courier, 'Courier New', monospace;color:#36393D;}
