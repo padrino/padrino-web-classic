@@ -4,15 +4,12 @@
     -description @guide.body_html
     %h1=@guide.title
     .content~@guide.body_html
+    %script{ :type => "text/javascript"} var disqus_title = "fooo";
     #disqus_thread
     %script{ :type => "text/javascript", :src => "http://disqus.com/forums/padrinorb/embed.js" }
     %noscript
       %a{ :href => "http://disqus.com/forums/padrinorb/?url=ref" }
         View the discussion thread.
-    %a.dsq-brlink{ :href => "http://disqus.com" }
-      blog comments powered by
-      %span.logo-disqus
-        Disqus
   -else
     %h1 Guide not found
     .content The guide requested is not available
