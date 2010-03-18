@@ -1,8 +1,9 @@
 .grid_12.alpha.margin-top
   -if @page
     -title @page.title
+    -description @page.body_html
     %h1=@page.title
-    .content~@page.body_formatted
+    .content~@page.body_html
   -else
     %h1 Page not found
     .content The page requested is not available

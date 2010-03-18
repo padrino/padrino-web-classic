@@ -1,6 +1,7 @@
 source :gemcutter
 
 # Project requirements
+gem 'sinatra', '1.0.b'
 gem 'rack-flash'
 gem 'thin' # or mongrel
 gem 'RedCloth'
@@ -8,7 +9,7 @@ gem 'popen4'
 
 # Component requirements
 gem 'haml'
-gem 'mongo_ext', '0.18.3', :require => nil
+gem 'mongo_ext', '0.19.1', :require => nil
 gem 'mongo_mapper'
 gem 'diff-lcs',  :require => 'diff/lcs'
 
@@ -21,4 +22,4 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 #   gem 'padrino-' + gem, :path => '/src/padrino-framework/padrino-' + gem
 # end
 
-gem 'padrino', '0.9.4'
+gem 'padrino', '0.9.5'

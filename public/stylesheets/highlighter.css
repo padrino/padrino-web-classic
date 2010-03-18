@@ -1,5 +1,5 @@
-.padrino-syntax{background-color:#F8F8FF; border:1px solid #DEDEDE; color:#6B9CB8;padding:0.5em;overflow:auto;font-size:12px;}
-.padrino-syntax pre{font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier','Terminal',monospace; margin-bottom:0px;}
+.padrino-syntax{background-color:#F8F8FF; border:1px solid #DEDEDE; color:#6B9CB8; padding:0.5em; overflow:auto;font-size:12px;}
+.padrino-syntax pre{font-family:'DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier','Terminal',monospace; margin-bottom:0;}
 .padrino-syntax .c{color:#998;font-style:italic;}
 .padrino-syntax .err{color:#a61717;background-color:#e3d2d2;}
 .padrino-syntax .k{font-weight:bold;}

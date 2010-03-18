@@ -2,37 +2,43 @@
   =f.label :name
   =f.error_message_on :name
   =f.text_field :name, :class => :text_field
-  %span.description Ex: a simple text
+  %span.description the name
 
 .group
   =f.label :surname
   =f.error_message_on :surname
   =f.text_field :surname, :class => :text_field
-  %span.description Ex: a simple text
+  %span.description the surname
 
 .group
   =f.label :email
   =f.error_message_on :email
   =f.text_field :email, :class => :text_field
-  %span.description Ex: a simple text
+  %span.description a valid email
 
 .group
   =f.label :password
   =f.error_message_on :password
   =f.password_field :password, :class => :text_field
-  %span.description Ex: a simple text
+  %span.description a password with at least 4 chars
 
 .group
   =f.label :password_confirmation
   =f.error_message_on :password_confirmation
   =f.password_field :password_confirmation, :class => :text_field
-  %span.description Ex: a simple text
+  %span.description a password confirmation
 
 .group
   =f.label :role
   =f.error_message_on :role
   =f.select :role, :options => access_control.roles
-  %span.description Ex: a simple text
+  %span.description their role
+
+.group
+  =f.label :description
+  =f.error_message_on :description
+  =f.text_area :description, :class => "text_area code", :style => "height:200px"
+  %span.description a small biography
 
 
 .group.navform.wat-cf

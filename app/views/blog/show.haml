@@ -1,12 +1,11 @@
 -title "Blog", @post.title
+-description @post.summary_html
 .grid_12.alpha
   %p
     %h1=@post.title
     .content
-      ~@post.summary_formatted
-      ~@post.body_formatted
-    %br
-    %br
+      ~@post.summary_html
+      ~@post.body_html
     #disqus_thread
     %script{ :type => "text/javascript", :src => "http://disqus.com/forums/padrinorb/embed.js" }
     %noscript

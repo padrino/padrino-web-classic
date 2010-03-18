@@ -1,3 +1,5 @@
+require 'md5'
+
 class Account
   include MongoMapper::Document
   attr_accessor :password
@@ -9,6 +11,7 @@ class Account
   key :crypted_password, String
   key :salt,             String
   key :role,             String
+  key :description,      String
 
   # Validations
   validates_presence_of     :email, :role
@@ -30,6 +33,9 @@ class Account
   many :guides, :foreign_key => "author_id", :dependent => :destroy
   many :pages,  :foreign_key => "author_id", :dependent => :destroy
 
+  # Extensions
+  has_textile :description
+
   ##
   # This method is for authentication purpose
   # 
@@ -50,6 +56,16 @@ class Account
   # 
   def full_name
     "#{name} #{surname}".strip
+  end
+
+  ##
+  # This method return the gravatar
+  # 
+  def gravatar(size=nil)
+    hash = MD5::md5(email)
+    gravatar  = "http://www.gravatar.com/avatar/#{hash}"
+    gravatar += "?s=#{size}" if size.present?
+    gravatar
   end
 
   ##

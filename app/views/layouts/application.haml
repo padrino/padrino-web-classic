@@ -5,16 +5,15 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :name => "description", :content => description}
     %link{:href => url(:blog, :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
     =stylesheet_link_tag "reset", "text", "960", "highlighter", "padrino"
-    =javascript_include_tag "top_up"
+    =javascript_include_tag "top_up-min"
     -if Padrino.env == :development
       %script{:type => "text/javascript"} var disqus_developer = 1;
   %body
     .container_16
       #header.grid_16
-        .grid_5.alpha=link_to image_tag("padrino.jpg", :alt => key_density), url(:base, :index)
+        .grid_5.alpha=link_to image_tag("padrino.jpg", :alt => key_density, :height => 100), url(:base, :index)
         .grid_11.omega
           %ul.menu
-            %li=link_to "HOME", url(:base, :index)
             %li=link_to "BLOG", url(:blog, :index)
             %li=link_to "GUIDES", url(:guides, :index)
             %li=link_to "CODE", "http://github.com/padrino/padrino-framework", :target => :_blank
@@ -22,23 +21,30 @@
               %li=link_to page.title.upcase, url(:pages, :show, :id => page)
         .clear
       .clear
-      .grid_16
-        =yield
+      .grid_16=yield
+      .clear
       #footer.grid_16
-        Padrino is released under the 
-        =link_to "MIT LICENSE", "http://en.wikipedia.org/wiki/MIT_License", :target => :_blank
-        ="-"
-        Hosting by
-        =link_to "LipsiaSOFT s.r.l.", "http://www.lipsiasoft.com"
+        .left
+          Running Padrino v.
+          =Padrino.version
+          on Sinatra v.
+          =Sinatra::VERSION
+        .right
+          Padrino is released under the 
+          =link_to "MIT LICENSE", "http://en.wikipedia.org/wiki/MIT_License", :target => :_blank
+          ="-"
+          Hosting by
+          =link_to "LipsiaSOFT s.r.l.", "http://www.lipsiasoft.com"
+        .clear
       .clear
     :javascript
       (function() {
         var links = document.getElementsByTagName('a');
         var query = '?';
         for(var i = 0; i < links.length; i++) {
-        if(links[i].href.indexOf('#disqus_thread') >= 0) {
-          query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-        }
+          if(links[i].href.indexOf('#disqus_thread') >= 0) {
+            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+          }
         }
         document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/padrinorb/get_num_replies.js' + query + '"></' + 'script>');
       })();

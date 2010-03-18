@@ -4,7 +4,7 @@ describe "Page Model" do
 
   before do
     Page.collection.remove
-    @account = Account.first || Account.create(:email => "foo@bar.it", :password => "foobar", :password_confirmation => "foobar")
+    @account = Account.first || Account.create(:email => "foo@bar.it", :password => "foobar", :password_confirmation => "foobar", :role => 'admin')
     @label = PageLabel.first || PageLabel.create(:name => 'Foo')
   end
 
@@ -51,31 +51,36 @@ describe "Page Model" do
   context 'textile' do
     it 'create correctly the textile formatted for body' do
       page = @account.pages.create(:title => 'Foo Bar', :body => 'h1. Lorem ipsum dolor sit amet, consectetur adipisicing elit', :label_id => @label.id)
-      page.body_formatted.should == '<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>'
+      page.body_html.should == '<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>'
     end
 
     it 'create correctly internal links' do
       linked = @account.pages.create(:title => 'Linked Page', :body => 'Im the linked page', :label_id => @label.id)
       linker = @account.pages.create(:title => 'Linker', :body => 'I should link to [[Linked Page]]', :label_id => @label.id)
-      linker.body_formatted.should == '<p>I should link to <a href="/pages/linked-page">Linked Page</a></p>'
+      linker.body_html.should == '<p>I should link to <a href="/pages/linked-page">Linked Page</a></p>'
     end
 
     it 'not parse pre without lang' do
       page = @account.pages.create(:title => 'Foo Bar', :body => '<pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>', :label_id => @label.id)
-      page.body_formatted.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
+      page.body_html.should == "<div class=\"padrino-syntax\"><pre>Lorem ipsum dolor sit amet, consectetur adipisicing elit\n</pre></div>"
     end
 
     it 'parse correctly pre with lang' do
       page = @account.pages.create(:title => 'Foo Bar', :body => '<pre lang="ruby">Lorem ipsum dolor sit amet, consectetur adipisicing elit</pre>', :label_id => @label.id)
-      page.body_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
+      page.body_html.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
       page = @account.pages.create(:title => 'Foo Baz', :body => 'pre[ruby]. Lorem ipsum dolor sit amet, consectetur adipisicing elit', :label_id => @label.id)
-      page.body_formatted.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
+      page.body_html.should == "<div class=\"padrino-syntax\"><pre><span class=\"no\">Lorem</span> <span class=\"n\">ipsum</span> <span class=\"n\">dolor</span> <span class=\"n\">sit</span> <span class=\"n\">amet</span><span class=\"p\">,</span> <span class=\"n\">consectetur</span> <span class=\"n\">adipisicing</span> <span class=\"n\">elit</span>\n</pre></div>"
     end
 
     it 'can generate a diff' do
       page = @account.pages.create(:title => 'Foo Bar', :body => 'h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit', :label_id => @label.id)
       page.body = "h3. foo"
       page.diff(:body).should == "\n@@ -1,2 +1,2 @@\n-h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit\n+h3. foo\n"
+    end
+
+    it 'parse correctly chapters' do
+      page = @account.pages.create(:title => 'Foo Bar', :body => 'h2. Lorem ipsum dolor sit amet, consectetur adipisicing elit', :label_id => @label.id)
+      page.body_html.should == "<a name=\"lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit\">&nbsp;</a>\n<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>"
     end
   end
 

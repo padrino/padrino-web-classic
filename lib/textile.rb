@@ -8,7 +8,7 @@ module Textile
       write_inheritable_attribute :textile_fields, fields
       write_inheritable_attribute :textile_options, options
       before_save :generate_textile
-      textile_fields.each { |f| key "#{f}_formatted", String }
+      textile_fields.each { |f| key "#{f}_html", String }
       textile_fields.each { |f| key "#{f}_chapters", Array   } if textile_options[:chapters]
     end
 
@@ -56,7 +56,7 @@ module Textile
           # Parse external links
           html.gsub!(/(<a href="(.*?)".*?)(>.*?<\/a>)/) do |link|
             tag_start, href, tag_end = $1, $2, $3
-            link =~ /target/ || href =~ /^http:\/\/(www\.)?padrino/ ? link : "#{tag_start} target=\"_blank\"#{tag_end}"
+            link =~ /target/ || href =~ /^\/|^http:\/\/(www\.)?padrino/ ? link : "#{tag_start} target=\"_blank\"#{tag_end}"
           end
           # Parse internal links
           html.gsub!(/\[\[([^\]]+)\]\]/) do
@@ -65,7 +65,7 @@ module Textile
             "<a href=\"/#{textile_options[:internal_links]}/#{Post.permalink_for(page.strip)}\">#{name.strip}</a>"
           end
           # Write content
-          self.send("#{textile_field}_formatted=", html)
+          self.send("#{textile_field}_html=", html)
         end
       end
   end # InstanceMethods

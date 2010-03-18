@@ -1,6 +1,5 @@
 *{margin:0;padding:0}
 .clear{clear:both;height:0;}
-.code{font-family:'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;}
 .wat-cf:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 .wat-cf{display:inline-block;}
 /* Hides from IE-mac \*/
@@ -69,7 +68,7 @@ input.checkbox{margin:0;padding:0;}
 .form .columns .column{width:48%;}
 .form .columns .left{float:left;}
 .form .columns .right{float:right;}
-.form label,.form input.text_field,.form textarea.text_area{font-size:1.1em;padding:1px 0;margin:0;}
+.form label,.form input.text_field,.form textarea.text_area{font-size:1.0em;padding:2px 0;margin:0;color:#36393D;}
 .form label.right{text-align:right;}
 .form input.checkbox,.form input.radio{margin-right:5px;}
 .form label.checkbox,.form label.radio{line-height:1.5em;}
@@ -91,3 +90,5 @@ ul.list li .item .avatar{float:left;margin:0 5px 5px 0;width:30px;height:30px;}
 #box .block{margin-bottom:20px;}
 #box .block h2{padding:10px 15px;margin:0;}
 #box .block .content{padding:10px 20px;}
+/* custom */
+.code{font-family: Courier, 'Courier New', monospace;color:#36393D;}
