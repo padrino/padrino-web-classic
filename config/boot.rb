@@ -18,9 +18,9 @@ puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 ##
 # Speedup Haml
 # 
-if Padrino.env == :production
-  Haml::Template.options[:ugly] = true
-end
+# if Padrino.env == :production
+  # Haml::Template.options[:ugly] = true
+# end
 
 ##
 # REE
