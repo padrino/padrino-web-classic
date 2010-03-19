@@ -13,6 +13,10 @@ PadrinoWeb.controllers :base do
     render 'base/team'
   end
 
+  get :api, :map => "/api" do
+    redirect "/api/index.html"
+  end
+
   get :changes, :map => "/changes" do
     changes = Padrino.root("tmp/changelog-#{Time.now.strftime("%d%m%Y")}")
     unless File.exist?(changes)
