@@ -13,6 +13,7 @@ class Account
   key :role,             String
   key :description,      String
   key :home_page,        String
+  key :team,             Boolean, :deafult => false
 
   # Validations
   validates_presence_of     :email, :role

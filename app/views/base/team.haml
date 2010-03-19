@@ -1,18 +1,13 @@
 -title "Team"
 %h1.margin-top Padrino Team
-.content
-  Padrino exists because of these members. each of them has committed their time and effort in the creation 
-  and improvement of this project. The team consists of programmers all over, such as Italy and the US.
-  Because of their hard work, Padrino has come into existence!
-  
+.content~Page.find_labeled(:team).try(:description_html)
 %ul.team
-  -Account.all.each do |account|
+  -Account.all(:team => true).each do |account|
     %li
       .avatar
-        - link_to account.home_page, :target => '_blank' do
+        -link_to account.home_page, :target => :_blank, :unless => account.home_page.blank? do
           =image_tag(account.gravatar(100), :alt => account.name)
       .description
-        %h3
-          = link_to account.full_name, account.home_page, :target => '_blank'
+        %h3=link_to account.full_name, account.home_page, :target => :_blank, :unless => account.home_page.blank?
         =account.description_html
       .clear

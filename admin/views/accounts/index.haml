@@ -13,12 +13,14 @@
           %th.first=mat(:account, :name)
           %th=mat(:account, :surname)
           %th=mat(:account, :email)
+          %th=mat(:account, :team)
           %th.last="&nbsp;"
         -@accounts.each do |account|
           %tr
             %td.first=account.name
             %td=account.surname
             %td=account.email
+            %td=account.team ? "Yes" : "No"
             %td.last
               =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to 
               ="|"

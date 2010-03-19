@@ -41,11 +41,16 @@
   %span.description their role
 
 .group
+  =f.label :team
+  =f.error_message_on :team
+  =f.check_box :team
+  %span.description is a team member?
+
+.group
   =f.label :description
   =f.error_message_on :description
   =f.text_area :description, :class => "text_area code", :style => "height:200px"
   %span.description a small biography
-
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button
