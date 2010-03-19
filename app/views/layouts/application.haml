@@ -6,8 +6,7 @@
     %link{:href => url(:blog, :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
     =stylesheet_link_tag "reset", "text", "960", "highlighter", "padrino"
     =javascript_include_tag "top_up-min"
-    -if Padrino.env == :development
-      %script{:type => "text/javascript"} var disqus_developer = 1; var disqus_skip_auth = true;
+    %script{:type => "text/javascript"} var disqus_developer = #{Padrino.env == :development ? 1 : 0}; var disqus_skip_auth = true;
   %body
     .container_16
       #header.grid_16
