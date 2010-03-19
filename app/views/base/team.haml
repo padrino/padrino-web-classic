@@ -1,6 +1,6 @@
 -title "Team"
 %h1.margin-top Padrino Team
-.content~Page.find_labeled(:team).try(:description_html)
+.content~Page.find_labeled(:team).try(:body_html)
 %ul.team
   -Account.all(:team => true).each do |account|
     %li
