@@ -8,7 +8,9 @@
 %ul.team
   -Account.all.each do |account|
     %li
-      .avatar=image_tag(account.gravatar(100), :alt => account.name)
+      .avatar
+        - link_to account.home_page do
+          =image_tag(account.gravatar(100), :alt => account.name)
       .description
         %h3=account.full_name
         =account.description_html

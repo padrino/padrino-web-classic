@@ -12,6 +12,7 @@ class Account
   key :salt,             String
   key :role,             String
   key :description,      String
+  key :home_page,        String
 
   # Validations
   validates_presence_of     :email, :role

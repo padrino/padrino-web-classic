@@ -17,6 +17,12 @@
   %span.description a valid email
 
 .group
+  =f.label :home_page
+  =f.error_message_on :home_page
+  =f.text_field :home_page, :class => :text_field
+  %span.description a valid Home Page
+
+.group
   =f.label :password
   =f.error_message_on :password
   =f.password_field :password, :class => :text_field
