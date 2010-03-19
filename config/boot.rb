@@ -15,4 +15,19 @@ end
 Bundler.require(:default, PADRINO_ENV)
 puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 
+##
+# Speedup Haml
+# 
+if Padrino.env == :production
+  Haml::Template.options[:ugly] = true
+end
+
+##
+# REE
+# http://www.rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
+# 
+if GC.respond_to?(:copy_on_write_friendly=)
+  GC.copy_on_write_friendly = true
+end
+
 Padrino.load!
