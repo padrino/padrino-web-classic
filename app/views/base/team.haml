@@ -9,9 +9,10 @@
   -Account.all.each do |account|
     %li
       .avatar
-        - link_to account.home_page do
+        - link_to account.home_page, :target => '_blank' do
           =image_tag(account.gravatar(100), :alt => account.name)
       .description
-        %h3=account.full_name
+        %h3
+          = link_to account.full_name, account.home_page, :target => '_blank'
         =account.description_html
       .clear
