@@ -7,6 +7,7 @@ class Page
   key :draft,        Boolean,  :default => true
   key :author_id,    ObjectId, :required => true
   key :label_id,     ObjectId
+  key :position,     Integer, :default => 0
 
   belongs_to :author, :class_name => "Account",   :foreign_key => "author_id"
   belongs_to :label,  :class_name => "PageLabel", :foreign_key => "label_id"
@@ -32,7 +33,7 @@ class Page
 
   def self.find_all_labeled(name)
     label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
-    label ? all(:label_id => label.id, :draft => false) : []
+    label ? all(:label_id => label.id, :draft => false, :order => "position") : []
   end
 
   private
@@ -63,9 +64,8 @@ class PageLabel
 
   ##
   # We need to prevent destroy
-  # 
+  #
   def destroy
     pages.empty? ? super : false
   end
 end
-  

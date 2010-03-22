@@ -9,7 +9,7 @@ PadrinoWeb.controllers :base do
   end
 
   get :team, :map => "/team" do
-    @team = Account.all
+    @team = Account.all(:order => "position", :team => true)
     render 'base/team'
   end
 

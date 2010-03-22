@@ -14,6 +14,7 @@ class Account
   key :description,      String
   key :home_page,        String
   key :team,             Boolean, :deafult => false
+  key :position,         Integer, :default => 0
 
   # Validations
   validates_presence_of     :email, :role
@@ -40,7 +41,7 @@ class Account
 
   ##
   # This method is for authentication purpose
-  # 
+  #
   def self.authenticate(email, password)
     account = first(:email => email) if email.present?
     account && account.password_clean == password ? account : nil
@@ -48,21 +49,21 @@ class Account
 
   ##
   # This method is used for retrive the original password.
-  # 
+  #
   def password_clean
     crypted_password.decrypt(salt)
   end
 
   ##
   # This method return name + surname
-  # 
+  #
   def full_name
     "#{name} #{surname}".strip
   end
 
   ##
   # This method return the gravatar
-  # 
+  #
   def gravatar(size=nil)
     hash = MD5::md5(email)
     gravatar  = "http://www.gravatar.com/avatar/#{hash}"
@@ -72,7 +73,7 @@ class Account
 
   ##
   # We need to prevent destroy if we have posts/guides/pages
-  # 
+  #
   def destroy
     posts.empty? && guides.empty? && pages.empty? ? super : false
   end

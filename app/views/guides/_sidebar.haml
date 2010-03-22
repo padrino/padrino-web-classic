@@ -8,14 +8,14 @@
 
 %h3 Guides Index
 %ul
-  -Guide.all(:draft => false).each do |guide|
+  -Guide.all(:draft => false, :order => "position").each do |guide|
     %li=link_to guide.title, url(:guides, :show, :id => guide)
 
 -if @guide
   %h3 Info
   %ul
-    %li 
-      Last edited by 
+    %li
+      Last edited by
       =@guide.author.full_name
     %li="Edited " + time_ago_in_words(@guide.updated_at || Time.now) + ' ago'
     %li=link_to "0 Comments", :anchor => :disqus_thread

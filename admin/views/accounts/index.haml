@@ -8,23 +8,25 @@
       =pat(:all)
       =mt(:account)
     .inner
-      %table.table
-        %tr
-          %th.first=mat(:account, :name)
-          %th=mat(:account, :surname)
-          %th=mat(:account, :email)
-          %th=mat(:account, :team)
-          %th.last="&nbsp;"
-        -@accounts.each do |account|
+      %table.table.sortable
+        %thead
           %tr
-            %td.first=account.name
-            %td=account.surname
-            %td=account.email
-            %td=account.team ? "Yes" : "No"
-            %td.last
-              =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to 
-              ="|"
-              =button_to pat(:delete), url(:accounts, :destroy, :id => account.id), :method => :delete, :class => :button_to
+            %th.first=mat(:account, :name)
+            %th=mat(:account, :surname)
+            %th=mat(:account, :email)
+            %th=mat(:account, :team)
+            %th.last="&nbsp;"
+        %tbody
+          -@accounts.each do |account|
+            %tr[account]
+              %td.first=account.name
+              %td=account.surname
+              %td=account.email
+              %td=account.team ? "Yes" : "No"
+              %td.last
+                =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to
+                ="|"
+                =button_to pat(:delete), url(:accounts, :destroy, :id => account.id), :method => :delete, :class => :button_to
       .actions-bar.wat-cf
         .actions="&nbsp;"
 
