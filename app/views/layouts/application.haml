@@ -8,6 +8,7 @@
     =javascript_include_tag "top_up-min"
     %script{:type => "text/javascript"} var disqus_developer = #{Padrino.env == :development ? 1 : 0}; var disqus_skip_auth = true;
   %body
+    .ribbon=link_to image_tag("screencast.png", :alt => key_density("Watch our Blog Tutorial Screencast")), "/guides/blog-tutorial"
     .container_16
       #header.grid_16
         .grid_5.alpha=link_to image_tag("padrino.jpg", :alt => key_density, :height => 100), url(:base, :index)
