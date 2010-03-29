@@ -2,7 +2,7 @@
 %h1.slogan=Page.find_labeled(:home_slogan).try(:body)
 
 .grid_6.alpha.margin-top=image_tag("glass.png", :alt => "Padrino Ruby Framework", :height => 161)
-.grid_6.margin-top.no-bg~Page.find_labeled(:home_code).try(:body_html)
+.grid_6.no-bg~Page.find_labeled(:home_code).try(:body_html)
 .grid_4.omega
   %ul.features
     -Page.find_all_labeled(:home_feature).each_with_index do |feature, i|

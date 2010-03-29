@@ -32,7 +32,7 @@
           on Sinatra v.
           =Sinatra::VERSION
         .right
-          Padrino is released under the 
+          Padrino is released under the
           =link_to "MIT LICENSE", "http://en.wikipedia.org/wiki/MIT_License", :target => :_blank
           ="-"
           Hosting by
@@ -50,3 +50,9 @@
         }
         document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/padrinorb/get_num_replies.js' + query + '"></' + 'script>');
       })();
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      try {
+      var pageTracker = _gat._getTracker("UA-12939205-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
