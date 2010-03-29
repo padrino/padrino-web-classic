@@ -1,7 +1,7 @@
 Admin.controllers :guides do
 
   get :index do
-    @guides = Guide.all
+    @guides = Guide.all(:order => "position ASC")
     render 'guides/index'
   end
 

@@ -6,6 +6,7 @@ class Guide
   key :draft,        Boolean, :default => true
   key :category_ids, Array
   key :author_id,    ObjectId, :required => true
+  key :position,     Integer, :default => 0
 
   belongs_to :author, :class_name => "Account", :foreign_key => "author_id"
 

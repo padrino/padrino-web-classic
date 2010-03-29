@@ -1,7 +1,7 @@
 Admin.controllers :pages do
 
   get :index do
-    @pages = Page.all
+    @pages = Page.all(:order => "position")
     render 'pages/index'
   end
 

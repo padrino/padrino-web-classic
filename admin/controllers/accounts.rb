@@ -1,7 +1,7 @@
 Admin.controllers :accounts do
 
   get :index do
-    @accounts = Account.all
+    @accounts = Account.all(:order => "position")
     render 'accounts/index'
   end
 

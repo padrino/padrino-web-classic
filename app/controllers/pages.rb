@@ -4,7 +4,7 @@ PadrinoWeb.controllers :pages do
     if params[:q] && params[:q].size >= 4
       @search = params[:q]
       label   = PageLabel.find_by_name("Menu")
-      @pages  = Page.search(@search, :order => "updated_at desc", :page => (params[:page] || 1), :draft => false, :paginate => true, :label_id => label.try(:id))
+      @pages  = Page.search(@search, :order => "position", :page => (params[:page] || 1), :draft => false, :paginate => true, :label_id => label.try(:id))
     end
     render 'pages/index'
   end

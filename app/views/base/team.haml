@@ -2,7 +2,7 @@
 %h1.margin-top Padrino Team
 .content~Page.find_labeled(:team).try(:body_html)
 %ul.team
-  -Account.all(:team => true).each do |account|
+  -@team.each do |account|
     %li
       .avatar
         -link_to account.home_page, :target => :_blank, :unless => account.home_page.blank? do
