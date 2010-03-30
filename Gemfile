@@ -1,7 +1,6 @@
 source :gemcutter
 
 # Project requirements
-gem 'sinatra', '1.0.b'
 gem 'rack-flash'
 gem 'thin' # or mongrel
 gem 'RedCloth'
@@ -22,4 +21,4 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 #   gem 'padrino-' + gem, :path => '/src/padrino-framework/padrino-' + gem
 # end
 
-gem 'padrino', '0.9.6'
+gem 'padrino', '0.9.9'
