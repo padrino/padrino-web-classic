@@ -24,7 +24,8 @@ module ExceptionNotifier
     app.set :redmine, {}
     app.error 500 do
       boom  = env['sinatra.error']
-      body  = ["#{boom.class} - #{boom.message}:", *boom.backtrace, "Path: #{app.request.path_info}"].join("\n  ")
+      body  = ["#{boom.class} - #{boom.message}:", *boom.backtrace].join("\n  ")
+      body += "\nPath: #{app.request.path_info}"
       logger.error body
       options.redmine.each { |k,v| body += "\n#{k.to_s.capitalize}: #{v}" }
       Padrino::Mailer::MailObject.new(
