@@ -13,7 +13,11 @@ PadrinoWeb.controllers :blog do
 
   get :show, :with => :id, :map => "/blog" do
     @post = Post.find_by_permalink(params[:id])
-    render 'blog/show'
+    if @post
+      render 'blog/show'
+    else
+      redirect url(:blog,:index)
+    end
   end
 
   get :category, :with => :id, :map => "/blog/category" do
