@@ -2,7 +2,7 @@ xml.instruct!
 xml.rss("version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/") do
   xml.channel do
     xml.title title("Blog")
-    xml.link url(:base, :index)
+    xml.link "http://#{env['HTTP_HOST']}"
     xml.description description
     xml.language "en-en"
 
@@ -10,7 +10,7 @@ xml.rss("version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/") do
       xml.item do
         xml.pubDate post.updated_at.rfc822
         xml.title post.title
-        xml.link url(:blog, :show, :id => post)
+        xml.link "http://#{env['HTTP_HOST']}" + url(:blog, :show, :id => post)
         xml.guid post.id
         xml.description post.body_html
       end
