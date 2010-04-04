@@ -1,7 +1,7 @@
 Admin.controllers :posts do
 
   get :index do
-    @posts = Post.all
+    @posts = Post.all.reverse
     render 'posts/index'
   end
 
