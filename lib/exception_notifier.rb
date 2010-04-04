@@ -1,9 +1,9 @@
 ##
 # This is an exception notifier for Padrino::Application with
 # redmine bonus feature.
-# 
+#
 # ==== Usage
-# 
+#
 #   class MyApp < Padrino::Application
 #     register ExceptionNotifier
 #     set :exceptions_from,    "errors@localhost.local"
@@ -14,9 +14,9 @@
 #     #  disable :raise_errors
 #     #  disable :show_exceptions
 #   end
-# 
+#
 module ExceptionNotifier
- 
+
   def self.registered(app)
     app.set :exceptions_subject, "Exception"
     app.set :exceptions_to,      "errors@localhost.local"
@@ -25,6 +25,10 @@ module ExceptionNotifier
     app.error 500 do
       boom  = env['sinatra.error']
       body  = ["#{boom.class} - #{boom.message}:", *boom.backtrace].join("\n  ")
+      body += "\n\n---Env:\n"
+      env.each { |k,v| body += "\n#{k}: #{v}" }
+      body += "\n\n---Params:\n"
+      params.each { |k,v| body += "\n#{k.inspect} => #{v.inspect}" }
       logger.error body
       options.redmine.each { |k,v| body += "\n#{k.to_s.capitalize}: #{v}" }
       Padrino::Mailer::MailObject.new(

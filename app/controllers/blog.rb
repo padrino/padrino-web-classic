@@ -13,6 +13,7 @@ PadrinoWeb.controllers :blog do
 
   get :show, :with => :id, :map => "/blog" do
     @post = Post.find_by_permalink(params[:id])
+    not_found unless @post
     render 'blog/show'
   end
 

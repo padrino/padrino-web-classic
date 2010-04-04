@@ -46,5 +46,6 @@ h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
 .feature th,.container_16 table th{padding:5px 10px 5px 10px;border-bottom:2px solid #CFCFCF;}
 .feature td,.container_16 table td{padding:5px 10px 5px 10px;border-bottom:1px solid #CFCFCF;}
 .feature{padding:10px;background-color:#FFF;}
+.ribbon{position:absolute;top:0px;right:0px;}
 /* Debug */
 /*.container_16 {background: #fff url(/images/16_col.gif) repeat-y;*/
