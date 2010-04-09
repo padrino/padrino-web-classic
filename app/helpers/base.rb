@@ -1,7 +1,7 @@
 # Helper methods defined here can be accessed in any controller or view in the application
 PadrinoWeb.helpers do
   def key_density(*words)
-    words.join(" ").concat(" - Padrino Ruby Web Framework").gsub(/^ - /, '')
+    words.compact.join(" ").concat(" - Padrino Ruby Web Framework").gsub(/^ - /, '')
   end
 
   def title(*words)

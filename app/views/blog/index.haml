@@ -1,4 +1,4 @@
--title "Blog"
+-title "Blog", @category.try(:name)
 .grid_12.alpha.margin-top
   -if @posts.empty?
     %h1 No Posts Found
