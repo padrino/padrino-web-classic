@@ -4,6 +4,7 @@
     %h1 No Guides Found
     .content The guide requested is not available
   -else
+    -description @guides.map(&:body_html).join(" ")
     -@guides.each_with_index do |guide, i|
       %h1{:class => ("border-top" if i!=0)}
         =link_to highlight(guide.title, @search), url(:guides, :show, :id => guide), :unless => guide.body.blank?

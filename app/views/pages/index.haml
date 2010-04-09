@@ -4,6 +4,7 @@
     %h1 No Pages Found
     .content The page requested is not available
   -else
+    -description @pages.map(&:body_html).join(" ")
     -@pages.each_with_index do |page, i|
       %h1{:class => ("border-top" if i!=0)}
         =link_to highlight(page.title, @search), url(:pages, :show, :id => page), :unless => page.body.blank?
