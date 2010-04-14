@@ -10,6 +10,7 @@ PadrinoWeb.controllers :base do
 
   get :team, :map => "/team" do
     @team = Account.all(:order => "position", :team => true)
+    @team_page = Page.find_labeled(:team)
     render 'base/team'
   end
 
