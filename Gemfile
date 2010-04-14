@@ -20,5 +20,5 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 # %w(core gen helpers mailer admin).each do |gem|
 #   gem 'padrino-' + gem, :path => '/src/padrino-framework/padrino-' + gem
 # end
-# Tesssssssssssst!
+
 gem 'padrino', '0.9.9'
