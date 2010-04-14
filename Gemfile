@@ -21,5 +21,4 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 #   gem 'padrino-' + gem, :path => '/src/padrino-framework/padrino-' + gem
 # end
 
-
 gem 'padrino', '0.9.9'
