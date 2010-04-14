@@ -16,7 +16,6 @@ gem 'diff-lcs',  :require => 'diff/lcs'
 gem 'rspec', :require => "spec", :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
 
-
 # Padrino
 # %w(core gen helpers mailer admin).each do |gem|
 #   gem 'padrino-' + gem, :path => '/src/padrino-framework/padrino-' + gem
