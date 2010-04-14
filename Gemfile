@@ -8,8 +8,8 @@ gem 'popen4'
 
 # Component requirements
 gem 'haml'
-gem 'mongo_ext', '0.19.1', :require => nil
-gem 'mongo_mapper'
+gem 'mongo_ext', '0.19.3', :require => nil
+gem 'mongo_mapper', '0.7.3'
 gem 'diff-lcs',  :require => 'diff/lcs'
 
 # Test requirements
