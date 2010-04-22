@@ -10,7 +10,7 @@
   %h3 Info
   %ul
     %li='Author ' + @post.author.full_name
-    %li='Posted ' + time_ago_in_words(@post.created_at || Time.now) + ' ago'
+    %li='Posted ' + time_ago_in_words(@post.updated_at || Time.now) + ' ago'
     %li=link_to '0 Comments', :anchor => :disqus_thread
 
 %h3 Links
