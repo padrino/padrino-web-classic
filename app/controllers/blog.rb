@@ -7,6 +7,7 @@ PadrinoWeb.controllers :blog do
   end
 
   get :rss, :map => "/blog.rss" do
+    content_type :rss
     @posts = Post.all(:limit => 10, :draft => false, :order => "created_at desc")
     render 'blog/rss'
   end
