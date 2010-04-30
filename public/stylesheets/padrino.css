@@ -15,8 +15,8 @@ ul.team .description h3{margin:0px;}
 #dsq-content h3{font-weight:bold;font-size:14px;margin-bottom:5px;}
 #header{border-bottom:2px solid #222222;}
 #footer{border-top:2px solid #222222; text-align:right;padding:5px 0px 20px 0px;margin-top:20px;}
-ul.menu{margin-top:80px;font-size:14px;float:right;list-style-type:none;margin:0px;margin-top:75px;}
-ul.menu li{float:left;margin-left:30px;padding:0px;}
+ul.menu{margin-top:80px;font-size:16px;float:right;list-style-type:none;margin:0px;margin-top:75px;}
+ul.menu li{float:left;margin-left:25px;padding:0px;}
 ul.menu li a:hover{text-decoration:none;border-top:2px solid #3D3D3D;}
 ul.features{list-style-type:none;margin:0px;font-size:28px;line-height:24px;letter-spacing:-3px;text-align:right;}
 ul.features a{color:#393939;}
