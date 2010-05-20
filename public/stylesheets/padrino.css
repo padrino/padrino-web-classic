@@ -7,10 +7,11 @@ h1,h2,h3,h4,h5,h6{font-weight:normal;}
 p{margin-top:10px;margin-bottom:10px;}
 ins{text-decoration:underline;}
 ul.team {list-style-type:none;margin:40px 0;padding:0px;}
-ul.team li{margin:20px 0;padding:0px;float:left;}
+ul.team li{margin:20px 0;padding:0px;float:left;height:150px;}
 ul.team .avatar{border:2px solid #CFCFCF;padding:3px;float:left;}
 ul.team .description{float:left;padding-left:20px;width:340px;}
 ul.team .description h3{margin:0px;}
+ul.team .description .l{padding-right:20px;text-align:justify;}
 #dsq-content{border:1px solid #CFCFCF;border-top:4px solid #CFCFCF;padding:15px 10px;margin-top:30px;background-color:#EEEEEE;}
 #dsq-content h3{font-weight:bold;font-size:14px;margin-bottom:5px;}
 #header{border-bottom:2px solid #222222;}

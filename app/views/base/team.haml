@@ -10,5 +10,5 @@
           =image_tag(account.gravatar(100), :alt => account.name)
       .description
         %h3=link_to account.full_name, account.home_page, :target => :_blank, :unless => account.home_page.blank?
-        =account.description_html
+        .l=account.description_html
       .clear
