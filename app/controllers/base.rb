@@ -1,3 +1,5 @@
+require 'rdoc/markup/simple_markup'
+require 'rdoc/markup/simple_markup/to_html'
 require 'open-uri'
 
 PadrinoWeb.controllers :base do
