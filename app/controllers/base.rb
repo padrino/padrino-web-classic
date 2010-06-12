@@ -26,10 +26,11 @@ PadrinoWeb.controllers :base do
       Dir[Padrino.root("tmp/changelog-*")].each { |f| File.delete(f) }
       rdoc = open("http://github.com/padrino/padrino-framework/raw/master/CHANGES.rdoc").read
       rdoc.gsub!(/= CHANGES\n\n/,'') # remove redundant <h1>CHANGES</h1>
+      rdoc.gsub!(/"/, "'") # convert " in '
       html = markup.convert(rdoc, formatter)
       html.sub!(/^<h2>/, '<h2 style="border-top:none">') # remove border from the first h2
       File.open(changes, "w") { |f| f.write html }
     end
-    render :erb, "<%= title 'Changes' %>\n#{File.read(changes)}", :layout => :"layouts/application.haml"
+    render :haml, "- title 'Changes'\n=\"#{File.read(changes)}\""
   end
 end
