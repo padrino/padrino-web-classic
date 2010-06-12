@@ -28,7 +28,8 @@ PadrinoWeb.controllers :base do
       rdoc.gsub!(/= CHANGES\n\n/,'') # remove redundant <h1>CHANGES</h1>
       html = markup.convert(rdoc, formatter)
       html.sub!(/^<h2>/, '<h2 style="border-top:none">') # remove border from the first h2
-      html.gsub!(/^/, "  ") # add two spaces before each line aka haml indentation
+      html.gsub!(/^/, "  "). # add two spaces before each line aka haml indentation
+           gsub!(/:/, "")
       File.open(changes, "w") { |f| f.write html }
     end
     render :haml, "- title 'Changes'\n:plain\n#{File.read(changes)}"
