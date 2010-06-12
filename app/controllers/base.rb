@@ -30,6 +30,6 @@ PadrinoWeb.controllers :base do
       html.sub!(/^<h2>/, '<h2 style="border-top:none">') # remove border from the first h2
       File.open(changes, "w") { |f| f.write html }
     end
-    render :erb, "<%= title 'Changes' %>\n" + File.read(changes)
+    render :erb, "<%= title 'Changes' %>\n#{File.read(changes)}", :layout => :"layouts/application.haml"
   end
 end
