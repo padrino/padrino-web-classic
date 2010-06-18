@@ -5,7 +5,6 @@
   %ul
     -@guide.body_chapters.each do |chapter|
       %li=link_to chapter, :anchor => Guide.label_for(chapter)
-
 %h3 Guides Index
 %ul
   -Guide.all(:draft => false, :order => "position").each do |guide|
@@ -19,3 +18,4 @@
       =@guide.author.full_name
     %li="Edited " + time_ago_in_words(@guide.updated_at || Time.now) + ' ago'
     %li=link_to "0 Comments", :anchor => :disqus_thread
+    =disqus_comment_counts

@@ -6,7 +6,7 @@ class Post
   key :body,         String
   key :tags,         String
   key :draft,        Boolean, :default => true
-  key :category_ids, Array
+  key :category_ids, Array,   :typecast => 'ObjectId'
   key :author_id,    ObjectId, :required => true
 
   belongs_to :author, :class_name => "Account", :foreign_key => "author_id"
@@ -24,20 +24,12 @@ class Post
 
   def self.per_page; 10; end
 
-  ##
-  # For some reason mongomapper don't convert string into Mongo::ObjectID
-  #
-  def category_ids=(ids)
-    categories = ids.map { |id| Category.find(id) rescue nil }.compact
-    super(categories.map(&:id))
-  end
-
   private
     def send_notification
-      Notifier.deliver(:post_added, self) if defined?(Notifier) # not loaded in test!!
+      Admin.deliver(:post, :added, self)
     end
 
     def send_notification_changes
-      Notifier.deliver(:post_edited, self) if defined?(Notifier) && !new? && (title_changed? || summary_changed? || body_changed?)
+      Admin.deliver(:post, :edited, self) if !new? && (title_changed? || summary_changed? || body_changed?)
     end
 end

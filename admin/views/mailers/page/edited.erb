@@ -2,7 +2,7 @@ Hi,<br />
 <br />
 <%= page.author.full_name %> edited a page "<%= page.title %>"<br />
 <br />
-you can see it here: <%= Notifier.base_url %><%= PadrinoWeb.url(:pages, :show, :id => page) %><br />
+you can see it here: <%= Admin.domain %><%= PadrinoWeb.url(:pages, :show, :id => page) %><br />
 <br />
 <%= %w(title body).map { |key|
     if diff = page.diff(key)
@@ -10,3 +10,6 @@ you can see it here: <%= Notifier.base_url %><%= PadrinoWeb.url(:pages, :show, :
       Albino.colorize(diff, :diff, :html, :linenos => :table, :noclasses => true)
     end
 }.compact.join("\n") %>
+---<br />
+Best Regards<br />
+Padrino Team

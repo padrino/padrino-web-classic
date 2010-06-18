@@ -8,9 +8,10 @@ gem 'popen4'
 
 # Component requirements
 gem 'haml'
-gem 'mongo_ext', '0.19.3', :require => nil
-gem 'mongo_mapper', '0.7.3'
+gem 'bson_ext', '1.0.1', :require => nil
+gem 'mongo_mapper', '0.8.0'
 gem 'diff-lcs',  :require => 'diff/lcs'
+gem 'disqus'
 
 # Test requirements
 gem 'rspec', :require => "spec", :group => "test"
@@ -21,4 +22,4 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 #   gem 'padrino-' + gem, :path => '/src/padrino-framework/padrino-' + gem
 # end
 
-gem 'padrino', '0.9.10'
+gem 'padrino', '0.9.11'

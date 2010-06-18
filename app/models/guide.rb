@@ -24,10 +24,10 @@ class Guide
 
   private
     def send_notification
-      Notifier.deliver(:guide_added, self) if defined?(Notifier) # not loaded in test!!
+      Admin.deliver(:guide, :added, self)
     end
 
     def send_notification_changes
-      Notifier.deliver(:guide_edited, self) if defined?(Notifier) && !new? && (title_changed? || body_changed?)
+      Admin.deliver(:guide, :edited, self) if !new? && (title_changed? || body_changed?)
     end
 end

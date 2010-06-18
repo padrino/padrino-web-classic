@@ -90,6 +90,6 @@ class Account
     end
 
     def send_notification
-      Notifier.deliver(:registration, self) if defined?(Notifier) # not loaded in test!!
+      Admin.deliver(:notifier, :registration, self)
     end
 end

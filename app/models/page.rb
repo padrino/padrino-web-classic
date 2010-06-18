@@ -27,13 +27,13 @@ class Page
   def self.per_page; 10; end
 
   def self.find_labeled(name)
-    label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
-    first(:label_id => label.id, :draft => false) if label
+    label = PageLabel.where("this.name.match(/#{name.to_s.humanize}/i)").first
+    where(:label_id => label.id, :draft => false).first if label
   end
 
   def self.find_all_labeled(name)
-    label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
-    label ? all(:label_id => label.id, :draft => false, :order => "position") : []
+    label = PageLabel.where("this.name.match(/#{name.to_s.humanize}/i)").first
+    label ? where(:label_id => label.id, :draft => false, :order => "position").all : []
   end
 
   private
@@ -47,11 +47,11 @@ class Page
     end
 
     def send_notification
-      Notifier.deliver(:page_added, self) if defined?(Notifier) # not loaded in test!!
+      Admin.deliver(:page, :added, self)
     end
 
     def send_notification_changes
-      Notifier.deliver(:page_edited, self) if defined?(Notifier) && !new? && (title_changed? || body_changed?)
+      Admin.deliver(:page, :edited, self) if !new? && (title_changed? || body_changed?)
     end
 end
 

@@ -1,7 +1,5 @@
 class PadrinoWeb < Padrino::Application
-  ##
-  # Exception Notifier
-  #
+  register Padrino::Helpers
   register ExceptionNotifier
   set :exceptions_subject, "PadrinoWeb"
   set :exceptions_from,    "Padrino WebSite <exceptions@padrinorb.com>"

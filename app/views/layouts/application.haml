@@ -6,7 +6,6 @@
     %link{:href => url(:blog, :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
     =stylesheet_link_tag "reset", "text", "960", "highlighter", "padrino"
     =javascript_include_tag "top_up-min"
-    %script{:type => "text/javascript"} var disqus_developer = #{Padrino.env == :development ? 1 : 0}; var disqus_skip_auth = true;
   %body
     .ribbon=link_to image_tag("screencast.png", :alt => key_density("Watch our Blog Tutorial Screencast")), "/guides/blog-tutorial"
     .container_16
@@ -17,7 +16,7 @@
             %li=link_to "BLOG", url(:blog, :index)
             %li=link_to "GUIDES", url(:guides, :index)
             %li=link_to "API", url(:base, :api), :target => :_blank
-            - Page.find_all_labeled(:menu).each do |page|
+            -Page.find_all_labeled(:menu).each do |page|
               %li=link_to page.title.upcase, url(:pages, :show, :id => page)
             %li=link_to "CHANGES", url(:base, :changes)
             %li=link_to "TEAM", url(:base, :team)
@@ -49,14 +48,3 @@
       pageTracker._setAllowLinker(true);
       pageTracker._trackPageview();
       } catch(err) {}
-    :javascript
-      (function() {
-        var links = document.getElementsByTagName('a');
-        var query = '?';
-        for(var i = 0; i < links.length; i++) {
-          if(links[i].href.indexOf('#disqus_thread') >= 0) {
-            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-          }
-        }
-        document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/padrinorb/get_num_replies.js' + query + '"></' + 'script>');
-      })();
