@@ -27,13 +27,13 @@ class Page
   def self.per_page; 10; end
 
   def self.find_labeled(name)
-    label = PageLabel.where("this.name.match(/#{name.to_s.humanize}/i)").first
-    where(:label_id => label.id, :draft => false).first if label
+    label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
+    first(:label_id => label.id, :draft => false) if label
   end
 
   def self.find_all_labeled(name)
-    label = PageLabel.where("this.name.match(/#{name.to_s.humanize}/i)").first
-    label ? where(:label_id => label.id, :draft => false, :order => "position").all : []
+    label = PageLabel.first("$where" => "this.name.match(/#{name.to_s.humanize}/i)")
+    label ? all(:label_id => label.id, :draft => false, :order => "position") : []
   end
 
   private
