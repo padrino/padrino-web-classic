@@ -1,26 +1,26 @@
-Padrino Web is source code of www.padrinorb.com
+Padrino Web is the source code for the Padrino official website (www.padrinorb.com)
 
-This is a small cms with these fatures:
+The Padrino website is a simplified CMS with the following features:
 
-* Wiki section
-* Page section
-* Blog section
+* Simple Editable Wiki for Guides
+* Pages Section for Updating Site Content
+* Basic Blog Engine for Creating and Viewing Posts
 * Powerful syntax highlighting with {pygmentize}[http://pygments.org]
-* Textile for formatting contents
-* Beautiful notifications with html diff of changed content
-* Full text search
-* Beautiful admin interface for manage every thing
-* MongoDB + Padrino powered
-* {Disqus comments}[http://disqus.com]
+* Textile support for formatting the documents
+* Beautiful mailer notifications with html diff for the changed content
+* Full text search functionality
+* Beautiful admin interface for managing all content
+* MongoDB + MongoMapper + Padrino powered
+* {Disqus comments}[http://disqus.com] Integration
 
 == Installation
 
-In order to make up an running this project you need to install:
+In order for this project to run on your server, you need the following dependencies:
 
-=== Mongo
+=== MongoDB
 
 You need to download mongo from here: http://www.mongodb.org/display/DOCS/Downloads
-and install it following this http://www.mongodb.org/display/DOCS/Quickstart
+and install following: http://www.mongodb.org/display/DOCS/Quickstart
 
 === Pygmentize
 
@@ -28,18 +28,22 @@ Go here http://pygments.org/download/ and install it.
 
 === Disqus
 
-Go here http://disqus.com (if you don't have it already) and make an account
+Go here http://disqus.com (if you don't have it already) and register an account
 
 === Populate
 
-For pupulate a db similar to our site http://www.padrinorb.com simply run in your console
+To install gem dependencies, be sure to run:
 
-  padrino rake seed
+  $ bundle install
 
-Start your mongod server
+To populate a db similar to our official site, you can execute:
+
+  $ padrino rake seed
+
+Start your mongod server.
 
 Start your project:
 
-  padrino start
+  $ padrino start
 
-Now browse http://localhost:3000/admin and login with user/pwd provided during seed.
+Now you can browse http://localhost:3000/admin and login with user/pwd provided during seed task.
