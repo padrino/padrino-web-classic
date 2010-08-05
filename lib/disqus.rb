@@ -38,4 +38,4 @@ Disqus.defaults.update({
   :num_items       => 15,                          # number of comments to display
   :show_powered_by => true,                        # show or hide powered by line
   :orientation     => "horizontal"                 # comment orientation
-})
+}) unless PADRINO_ENV == "test" # don't tell me why bundler 1.0 didn't load it on test

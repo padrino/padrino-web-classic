@@ -1,5 +1,5 @@
 Admin.mailer :notifier do
-  defaults :form => Admin.email_from
+  defaults :from => Admin.email_from
 
   email :registration do |account|
     to account.email

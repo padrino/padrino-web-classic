@@ -11,7 +11,3 @@ Admin.set :delivery_method, :test
 
 Admin.setup_application!
 PadrinoWeb.setup_application!
-
-def app
-  PadrinoWeb.tap { |app| }
-end

@@ -86,14 +86,22 @@ describe "Post Model" do
   end
 
   context 'categories' do
+    before do
+      Category.delete_all
+    end
+
     it 'associate correctly categories' do
       categories = %w(press news ruby).map { |name| Category.create(:name => name) }
       post = @account.posts.create(:title => 'Last News', :summary => "Last news")
       post.should_not be_nil
+      post.categories.should be_empty
       post.categories = categories
       post.save
       post.categories.should == categories
-      post = @account.posts.create(:title => 'Last Blog News', :summary => "Last blog news", :category_ids => categories.map(&:id).flatten)
+      # Simulation of an html form
+      post.should respond_to(:category_ids=)
+      category_ids = categories.map { |c| c.id.to_s }.flatten
+      post = @account.posts.create(:title => 'Last Blog News', :summary => "Last blog news", :category_ids => category_ids)
       post.should_not be_nil
       post.categories.should == categories
     end

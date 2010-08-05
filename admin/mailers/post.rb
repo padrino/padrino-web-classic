@@ -1,5 +1,5 @@
 Admin.mailer :post do
-  defaults :form => Admin.email_from
+  defaults :from => Admin.email_from
 
   email :added do |post|
     to Account.all.collect(&:email)

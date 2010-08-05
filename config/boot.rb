@@ -18,9 +18,16 @@ puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 ##
 # REE
 # http://www.rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
-# 
+#
 if GC.respond_to?(:copy_on_write_friendly=)
   GC.copy_on_write_friendly = true
 end
+
+##
+# Padrino contrib stuff
+#
+require 'padrino-contrib/exception_notifier'
+require 'padrino-contrib/orm/mm/permalink'
+require 'padrino-contrib/orm/mm/search'
 
 Padrino.load!

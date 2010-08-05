@@ -1,5 +1,5 @@
 Admin.mailer :guide do
-  defaults :form => Admin.email_from
+  defaults :from => Admin.email_from
 
   email :added do |guide|
     to Account.all.collect(&:email)
