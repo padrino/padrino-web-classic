@@ -101,6 +101,7 @@ describe "Post Model" do
       # Simulation of an html form
       post.should respond_to(:category_ids=)
       category_ids = categories.map { |c| c.id.to_s }.flatten
+      category_ids << "0"
       post = @account.posts.create(:title => 'Last Blog News', :summary => "Last blog news", :category_ids => category_ids)
       post.should_not be_nil
       post.categories.should == categories

@@ -24,6 +24,11 @@ class Post
 
   def self.per_page; 10; end
 
+  # Need to remove empty form values
+  def category_ids=(value)
+    super(Array(value).reject { |v| v.to_i == 0 })
+  end
+
   private
     def send_notification
       Admin.deliver(:post, :added, self)
