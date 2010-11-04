@@ -24,7 +24,7 @@ PadrinoWeb.controllers :base do
       markup = SM::SimpleMarkup.new
       formatter = SM::ToHtml.new
       Dir[Padrino.root("tmp/changelog-*")].each { |f| File.delete(f) }
-      rdoc = open("http://github.com/padrino/padrino-framework/raw/master/CHANGES.rdoc").read
+      rdoc = open("https://github.com/padrino/padrino-framework/raw/master/CHANGES.rdoc").read
       rdoc.gsub!(/= CHANGES\n\n/,'') # remove redundant <h1>CHANGES</h1>
       html = markup.convert(rdoc, formatter)
       html.sub!(/^<h2>/, '<h2 style="border-top:none">') # remove border from the first h2
