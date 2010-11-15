@@ -6,6 +6,7 @@ h2{border-top:4px solid #CFCFCF;padding-top:15px;}
 h1,h2,h3,h4,h5,h6{font-weight:normal;}
 p{margin-top:10px;margin-bottom:10px;}
 ins{text-decoration:underline;}
+blockquote{border-left:2px solid #CFCFCF;padding-left:5px;background-color:#EEEEEE;}
 ul.team {list-style-type:none;margin:40px 0;padding:0px;}
 ul.team li{margin:20px 0;padding:0px;float:left;height:150px;}
 ul.team .avatar{border:2px solid #CFCFCF;padding:3px;float:left;}
