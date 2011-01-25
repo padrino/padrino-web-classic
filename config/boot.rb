@@ -30,17 +30,4 @@ require 'padrino-contrib/exception_notifier'
 require 'padrino-contrib/orm/mm/permalink'
 require 'padrino-contrib/orm/mm/search'
 
-Padrino.before_load do
-  puts "-- reload"
-  # Clean Documents
-  MongoMapper::Document.descendants.each { |m| m.descendants.clear if m.respond_to?(:descendants) }
-  MongoMapper::Document.descendants.clear
-  MongoMapper::EmbeddedDocument.descendants.each { |m| m.descendants.clear if m.respond_to?(:descendants) }
-  MongoMapper::EmbeddedDocument.descendants.clear
-
-  # Clean IdentityMap
-  MongoMapper::Plugins::IdentityMap.clear
-  MongoMapper::Plugins::IdentityMap.models.clear
-end
-
 Padrino.load!
