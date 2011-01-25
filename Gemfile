@@ -8,8 +8,8 @@ gem 'popen4'
 
 # Component requirements
 gem 'haml'
-gem 'bson_ext', '>=1.2.0', :require => nil
-gem 'mongo_mapper', :git => "git://github.com/jnunemaker/mongomapper.git", :branch => "rails3"
+gem 'bson_ext', '>=1.1.2', :require => nil
+gem 'mongo_mapper', '0.8.6'
 gem 'diff-lcs',  :require => 'diff/lcs'
 gem 'disqus'
 
@@ -24,5 +24,5 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 #
 # gem 'padrino-contrib', :path => '/src/padrino-contrib'
 
-gem 'padrino', '0.9.20'
+gem 'padrino', '0.9.14'
 gem 'padrino-contrib', '<0.1.0'
