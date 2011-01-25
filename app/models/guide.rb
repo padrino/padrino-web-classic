@@ -1,4 +1,5 @@
 class Guide
+
   include MongoMapper::Document
 
   key :title,        String,  :required => true
