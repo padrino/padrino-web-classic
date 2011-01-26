@@ -2,6 +2,13 @@ class Admin < Padrino::Application
   register Padrino::Helpers
   register Padrino::Mailer
   register Padrino::Admin::AccessControl
+  set :delivery_method, :smtp => {
+    :address         => 'smtp.lipsiasoft.com',
+    :port            => '25',
+    :user_name       => 'mailer@lipsiasoft.com',
+    :password        => 'mailer!',
+    :authentication  => :login # :plain, :login, :cram_md5, no auth by default
+  }
 
   # App setting
   set :email_from, "Padrino WebSite <noreply@padrinorb.com>"
