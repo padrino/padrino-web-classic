@@ -9,7 +9,7 @@ PadrinoWeb.controllers :blog do
   get :rss, :map => "/blog.rss" do
     content_type :rss, :charset => "UTF-8"
     @posts = Post.all(:limit => 10, :draft => false, :order => "created_at desc")
-    render 'blog/rss'
+    render 'blog/rss', :layout => false
   end
 
   get :show, :with => :id, :map => "/blog" do
