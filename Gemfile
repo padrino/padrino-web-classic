@@ -7,7 +7,6 @@ gem 'RedCloth'
 gem 'popen4'
 
 # Component requirements
-gem 'sinatra'
 gem 'haml'
 gem 'bson_ext', '>=1.2.0', :require => nil
 gem 'mongo_mapper', :git => "git://github.com/jnunemaker/mongomapper.git", :branch => "rails3"
