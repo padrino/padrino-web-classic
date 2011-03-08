@@ -10,7 +10,7 @@ xml.rss("version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/") do
       xml.item do
         xml.pubDate post.updated_at.rfc822
         xml.title post.title
-        xml.link "http://#{env['HTTP_HOST']}" + url(:blog, :show, :id => post)
+        xml.link "http://#{env['HTTP_HOST']}/blog/#{post.permalink}"
         xml.guid post.id
         xml.description post.body_html
       end
