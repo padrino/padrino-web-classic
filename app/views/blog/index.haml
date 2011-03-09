@@ -10,14 +10,15 @@
         =link_to highlight(post.title, @search), url(:blog, :show, :id => post), :unless => post.body.blank?
       .content
         ~highlight(post.summary_html, @search)
-        =link_to "Continue Reading", url(:blog, :show, :id => post), :if => post.body.present?
+        -if => post.body.present?
+          =link_to "Continue Reading", url(:blog, :show, :id => post)
       .align-right
         Posted in
         =post.categories.map(&:name).join(", ")
         by
         =post.author.full_name
         ="|"
-        =time_ago_in_words(post.updated_at || Time.now) + ' ago'
+        =time_ago_in_words(post.created_at || Time.now) + ' ago'
         ="|"
         =link_to "0 Comments", url(:blog, :show, :id => post), :anchor => "disqus_thread"
     .pagination=paginate(@posts, :blog, :index)
