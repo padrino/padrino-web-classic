@@ -10,7 +10,7 @@
         =link_to highlight(post.title, @search), url(:blog, :show, :id => post), :unless => post.body.blank?
       .content
         ~highlight(post.summary_html, @search)
-        -if => post.body.present?
+        -if post.body.present?
           =link_to "Continue Reading", url(:blog, :show, :id => post)
       .align-right
         Posted in
