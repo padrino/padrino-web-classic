@@ -3,11 +3,10 @@
     =text_field_tag :q, :value => params[:q], :class => :search_field
     =submit_tag "Search", :class => :search_button
     .clear
-  -if params[:q] && params[:q].size > 0 && params[:q].size < 4
     %em Write at least 4 chars
-  -if @search
+    %br
     %em
-      Matches is
+      Matches are
       %strong.highlight highlighted
 
 %br

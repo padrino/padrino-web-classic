@@ -11,4 +11,11 @@ Admin.controllers :base do
       klass.find(id).update_attributes(:position => position)
     end
   end
+
+  get :restart do
+    flash[:notice] = "Cache was flushed"
+    PadrinoWeb.cache.flush
+    PadrinoWeb.reload!
+    redirect request.referrer
+  end
 end

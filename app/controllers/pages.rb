@@ -1,6 +1,6 @@
-PadrinoWeb.controllers :pages do
+PadrinoWeb.controllers :pages, :cache => true do
 
-  get :search, :map => "/pages/search" do
+  get :search, :map => "/pages/search", :cache => false do
     if params[:q] && params[:q].size >= 4
       @search = params[:q]
       label   = PageLabel.find_by_name("Menu")

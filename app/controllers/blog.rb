@@ -1,6 +1,6 @@
-PadrinoWeb.controllers :blog do
+PadrinoWeb.controllers :blog, :cache => true do
 
-  get :index, :map => "/blog" do
+  get :index, :map => "/blog", :cache => false do
     @search = params[:q] if params[:q] && params[:q].size >= 4
     @posts  = Post.search(@search, :order => "created_at desc", :page => (params[:page] || 1), :draft => false, :paginate => true)
     render 'blog/index'

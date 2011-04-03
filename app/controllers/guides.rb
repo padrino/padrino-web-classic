@@ -1,5 +1,6 @@
-PadrinoWeb.controllers :guides do
-  get :search, :map => "/guides/search" do
+PadrinoWeb.controllers :guides, :cache => true do
+
+  get :search, :map => "/guides/search", :cache => false do
     if params[:q] && params[:q].size >= 4
       @search  = params[:q]
       @guides  = Guide.search(@search, :order => "position", :page => (params[:page] || 1), :draft => false, :paginate => true)

@@ -1,16 +1,10 @@
 # Defines our constants
 PADRINO_ENV  = ENV["PADRINO_ENV"] ||= ENV["RACK_ENV"] ||= "development" unless defined?(PADRINO_ENV)
-PADRINO_ROOT = File.dirname(__FILE__) + '/..' unless defined? PADRINO_ROOT
+PADRINO_ROOT = File.dirname(__FILE__) + '/..' unless defined?(PADRINO_ROOT)
 
-begin
-  # Require the preresolved locked set of gems.
-  require File.expand_path('../../.bundle/environment', __FILE__)
-rescue LoadError
-  # Fallback on doing the resolve at runtime.
-  require 'rubygems'
-  require 'bundler'
-  Bundler.setup
-end
+require 'rubygems'
+require 'bundler'
+Bundler.setup
 
 Bundler.require(:default, PADRINO_ENV)
 puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
@@ -19,9 +13,13 @@ puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 # REE
 # http://www.rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
 #
-if GC.respond_to?(:copy_on_write_friendly=)
-  GC.copy_on_write_friendly = true
-end
+GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
+
+##
+# Remove cached css/js
+#
+`rm -rf #{Padrino.root("public", "javascripts", "padrino-bundle.js")}`
+`rm -rf #{Padrino.root("public", "stylesheets", "padrino-bundle.css")}`
 
 ##
 # Padrino contrib stuff
@@ -29,5 +27,7 @@ end
 require 'padrino-contrib/exception_notifier'
 require 'padrino-contrib/orm/mm/permalink'
 require 'padrino-contrib/orm/mm/search'
+require 'padrino-contrib/helpers/assets_compressor'
 
 Padrino.load!
+Padrino::Reloader.exclude_constants << %w{Padrino::Contrib::Helpers::AssetsCompressor}
