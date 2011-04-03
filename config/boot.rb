@@ -30,4 +30,3 @@ require 'padrino-contrib/orm/mm/search'
 require 'padrino-contrib/helpers/assets_compressor'
 
 Padrino.load!
-Padrino::Reloader.exclude_constants << %w{Padrino::Contrib::Helpers::AssetsCompressor}
