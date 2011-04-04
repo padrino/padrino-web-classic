@@ -1,7 +1,8 @@
 module Textile
+  extend ActiveSupport::Concern
+
   module ClassMethods
     def has_textile(*fields)
-      include InstanceMethods
       options = fields.extract_options!
       options.reverse_merge!(:internal_links => :blog)
       class_inheritable_accessor  :textile_fields, :textile_options
@@ -9,7 +10,7 @@ module Textile
       write_inheritable_attribute :textile_options, options
       before_save :generate_textile
       textile_fields.each { |f| key "#{f}_html", String }
-      textile_fields.each { |f| key "#{f}_chapters", Array   } if textile_options[:chapters]
+      textile_fields.each { |f| key "#{f}_chapters", Array } if textile_options[:chapters]
     end
 
     def label_for(label)
@@ -70,4 +71,4 @@ module Textile
       end
   end # InstanceMethods
 end # Permalink
-MongoMapper::Document.append_extensions(Textile::ClassMethods)
+MongoMapper::Document.send(:include, Textile)

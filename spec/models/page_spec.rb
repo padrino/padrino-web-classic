@@ -94,7 +94,7 @@ describe "Page Model" do
 
     it 'cannot be destroyed if has pages' do
       page = @account.pages.create(:title => 'Foo Bar', :body => 'Lorem', :label_name => 'label')
-      page.label.pages include(page)
+      page.label.pages.should == [page]
       page.label.destroy
       PageLabel.find_by_name('label').should_not be_nil
     end

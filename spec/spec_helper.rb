@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + "/../config/boot"
 
 MongoMapper.connection.drop_database(MongoMapper.database.name)
 
-Spec::Runner.configure do |conf|
+RSpec.configure do |conf|
   conf.include Rack::Test::Methods
 end
 

@@ -13,14 +13,14 @@ describe "Account Model" do
 
   it 'not create an account' do
     account = Account.create
-    account.errors.full_messages.should include("Password confirmation can't be empty",
-                                                "Role can't be empty",
+    account.errors.full_messages.should include("Email can't be blank",
+                                                "Email is too short (minimum is 3 characters)",
+                                                "Email is invalid",
+                                                "Role can't be blank",
                                                 "Role is invalid",
-                                                "Email can't be empty",
-                                                "Email is invalid",
-                                                "Email is invalid",
-                                                "Password can't be empty",
-                                                "Password is invalid")
+                                                "Password can't be blank",
+                                                "Password is too short (minimum is 4 characters)",
+                                                "Password confirmation can't be blank")
   end
 
   it 'cannot be destroyed if has posts' do
