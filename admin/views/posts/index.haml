@@ -20,7 +20,7 @@
           %th.last="&nbsp;"
         -@posts.each do |post|
           %tr
-            %td.first=link_to PadrinoWeb.url(:blog, :show, :id => post), post.title, :target => :_blank
+            %td.first=link_to post.title, PadrinoWeb.url(:blog, :show, :id => post), :target => :_blank
             %td=post.categories.map(&:name).join(", ")
             %td=post.tags
             %td=post.draft? ? "Yes" : "No"
