@@ -26,7 +26,7 @@
               %td.last
                 =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to
                 ="|"
-                =button_to pat(:delete), url(:accounts, :destroy, :id => account.id), :method => :delete, :class => :button_to
+                =button_to pat(:delete), url(:accounts, :destroy, :id => account.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
       .actions-bar.wat-cf
         .actions="&nbsp;"
 
