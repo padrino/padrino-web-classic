@@ -13,7 +13,6 @@
       %table.table
         %tr
           %th.first=mat(:post, :title)
-          %th=mat(:post, :link)
           %th=mat(:post, :categories)
           %th=mat(:post, :tags)
           %th=mat(:post, :draft)
@@ -21,14 +20,13 @@
           %th.last="&nbsp;"
         -@posts.each do |post|
           %tr
-            %td.first=post.title
-            %td=link_to PadrinoWeb.url(:blog, :show, :id => post), PadrinoWeb.url(:blog, :show, :id => post), :target => :_blank
+            %td.first=link_to PadrinoWeb.url(:blog, :show, :id => post), post.title, :target => :_blank
             %td=post.categories.map(&:name).join(", ")
             %td=post.tags
             %td=post.draft? ? "Yes" : "No"
             %td=l(post.updated_at, :format => :short)
             %td.last
-              =button_to pat(:edit), url(:posts, :edit, :id => post.id), :method => :get, :class => :button_to 
+              =button_to pat(:edit), url(:posts, :edit, :id => post.id), :method => :get, :class => :button_to
               ="|"
               =button_to pat(:delete), url(:posts, :destroy, :id => post.id), :method => :delete, :class => :button_to
       .actions-bar.wat-cf
