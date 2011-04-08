@@ -28,5 +28,6 @@ require 'padrino-contrib/exception_notifier'
 require 'padrino-contrib/orm/mm/permalink'
 require 'padrino-contrib/orm/mm/search'
 require 'padrino-contrib/helpers/assets_compressor'
+require 'open-uri'
 
 Padrino.load!
