@@ -47,7 +47,8 @@ h1.slogan{margin:40px 0px 40px 0px;font-size:24px;text-align:right;}
 .pagination .current{border:1px solid #222222;padding:0px 5px 0px 5px;margin-left:3px;color:#DFDAD9;background-color:#333333}
 .feature th,.container_16 table th{padding:5px 10px 5px 10px;border-bottom:2px solid #CFCFCF;}
 .feature td,.container_16 table td{padding:5px 10px 5px 10px;border-bottom:1px solid #CFCFCF;}
-.feature{padding:10px;background-color:#FFF;}
+.feature{padding:10px;background-color:#FFF;width:650px;margin-bottom:30px;}
+.display-none{display:none}
 .ribbon{position:absolute;top:0px;right:0px;}
 /* Debug */
 /*.container_16 {background: #fff url(/images/16_col.gif) repeat-y;*/

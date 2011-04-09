@@ -4,8 +4,8 @@
     %title=title
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :name => "description", :content => description}
     %link{:href => url(:blog, :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
-    =stylesheet_link_tag "reset", "text", "960", "highlighter", "padrino", :cache => "padrino-bundle"
-    =javascript_include_tag "top_up-min"
+    =stylesheet_link_tag "reset", "text", "960", "fancybox", "highlighter", "padrino", :cache => "padrino-bundle"
+    =javascript_include_tag "jquery", "fancybox", "application", :cache => "padrino-bundle"
   %body
     .ribbon=link_to image_tag("screencast.png", :alt => key_density("Watch our Blog Tutorial Screencast")), "/guides/blog-tutorial"
     .container_16

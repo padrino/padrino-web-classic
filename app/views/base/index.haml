@@ -6,21 +6,22 @@
 .grid_4.omega
   %ul.features
     -Page.find_all_labeled(:home_feature).each_with_index do |feature, i|
-      %li=link_to feature.title.upcase, :anchor => "feature-#{feature.id}", :toptions => "width=650, type=dom, resizable=0, effect=show", :class => (:alternate if i%2==0)
+      %li=link_to feature.title.upcase, :anchor => "feature-#{feature.id}", :rel => :popup, :class => (:alternate if i%2==0)
 .clear
 
--Page.find_all_labeled(:home_feature).each do |feature|
-  .feature{:id => "feature-#{feature.id}", :style => "display:none"}
-    %h3=feature.title
-    ~feature.body_html
+.display-none
+  -Page.find_all_labeled(:home_feature).each do |feature|
+    .feature{:id => "feature-#{feature.id}"}
+      %h3=feature.title
+      ~feature.body_html
 
 .screens
-  =link_to image_tag("screens.jpg", :alt => "Padrino Admin", :height => 302), image_path("login.png"), :toptions => "effect=show, group=screenshoots"
+  =link_to image_tag("screens.jpg", :alt => "Padrino Admin", :height => 302), image_path("login.png"), :rel => :popup_image
   %br
   =Page.find_labeled(:home_admin).try(:body_html)
 
-=link_to image_tag("dashboard.png", :alt => "Dashboard Page"), image_path("dashboard.png"), :toptions => "effect=show, group=screenshoots", :style => "display:none"
-=link_to image_tag("index.png", :alt => "Index Page"), image_path("index.png"), :toptions => "effect=appear, group=screenshoots", :style => "display:none"
+=link_to image_tag("dashboard.png", :alt => "Dashboard Page"), image_path("dashboard.png"), :rel => :popup_image, :style => "display:none"
+=link_to image_tag("index.png", :alt => "Index Page"), image_path("index.png"), :rel => :popup_image, :style => "display:none"
 
 .margin-top~Page.find_labeled(:home).try(:body_html)
 
