@@ -23,6 +23,7 @@ PadrinoWeb.controllers :guides, :cache => true do
   get :book, :provides => :pdf do
     content_type :pdf
     @guides  = Guide.all(:order => "position")
+    raise PDFKit.configuration.wkhtmltopdf.inspect
     html     = render 'guides/book', :layout => false
     html.gsub!(/href="/, "href=\"http://www.padrinorb.com")
     kit      = PDFKit.new(html, "footer-right" => "Page [page] of [toPage]",
