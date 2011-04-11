@@ -30,4 +30,8 @@ require 'padrino-contrib/orm/mm/search'
 require 'padrino-contrib/helpers/assets_compressor'
 require 'open-uri'
 
+# Fix for my Passenger Environment
+PDFKit.configuration.wkhtmltopdf = "/usr/local/bin/wkhtmltopdf"
+
+# Boot Padrino
 Padrino.load!
