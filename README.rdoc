@@ -12,6 +12,7 @@ The Padrino website is a simplified CMS with the following features:
 * Beautiful admin interface for managing all content
 * MongoDB + MongoMapper + Padrino powered
 * {Disqus comments}[http://disqus.com] Integration
+* PDF integration through {PDFKit}[https://github.com/jdpace/PDFKit]
 
 == Installation
 
@@ -21,6 +22,12 @@ In order for this project to run on your server, you need the following dependen
 
 You need to download mongo from here: http://www.mongodb.org/display/DOCS/Downloads
 and install following: http://www.mongodb.org/display/DOCS/Quickstart
+
+=== WKHTMLTOPDF
+
+HTML+CSS to PDF using wkhtmltopdf used to generate the pocket pdf guide.
+
+https://github.com/jdpace/PDFKit/wiki/Installing-WKHTMLTOPDF
 
 === Pygmentize
 

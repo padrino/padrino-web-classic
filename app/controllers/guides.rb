@@ -19,4 +19,20 @@ PadrinoWeb.controllers :guides, :cache => true do
     not_found unless @guide
     render 'guides/show'
   end
+
+  get :book, :provides => :pdf do
+    content_type :pdf
+    @guides  = Guide.all(:order => "position")
+    html     = render 'guides/book', :layout => false
+    html.gsub!(/href="/, "href=\"http://www.padrinorb.com")
+    kit      = PDFKit.new(html, "footer-right" => "Page [page] of [toPage]",
+                                "header-right" => "Padrino Framework v.#{Padrino.version} Book",
+                                "disable-internal-links" => false,
+                                "disable-external-links" => false)
+
+    %w(reset text highlighter padrino).each do |style|
+      kit.stylesheets << Padrino.root("public", "stylesheets", "#{style}.css")
+    end
+    kit.to_pdf
+  end
 end

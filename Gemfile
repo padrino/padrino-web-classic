@@ -14,6 +14,7 @@ gem 'diff-lcs', :require => 'diff/lcs'
 gem 'disqus'
 gem 'yui-compressor', :require => 'yui/compressor'
 gem 'rdoc'
+gem 'pdfkit'
 
 # Test requirements
 gem 'rspec', :group => "test"
