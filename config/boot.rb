@@ -30,12 +30,4 @@ require 'padrino-contrib/orm/mm/search'
 require 'padrino-contrib/helpers/assets_compressor'
 require 'open-uri'
 
-PDFKit.configure do |config|
-  config.wkhtmltopdf = `which wkhtmltopdf`.chomp
-  config.default_options = {
-    :page_size => 'A4',
-    :print_media_type => true
-  }
-end
-
 Padrino.load!
