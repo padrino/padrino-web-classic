@@ -9,7 +9,7 @@ gem 'popen4'
 # Component requirements
 gem 'haml'
 gem 'bson_ext', '>=1.2.0', :require => nil
-gem 'mongo_mapper', :git => "git://github.com/jnunemaker/mongomapper.git"
+gem 'mongo_mapper'
 gem 'diff-lcs', :require => 'diff/lcs'
 gem 'disqus'
 gem 'yui-compressor', :require => 'yui/compressor'
