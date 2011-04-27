@@ -4,6 +4,7 @@ class Admin < Padrino::Application
   register Padrino::Admin::AccessControl
 
   set :session_secret, "7043bc560e73c46f0d5eabedbabd217f9f5277e6935047bb9430296ab7b47a44"
+  set :sessions, true
   set :delivery_method, :smtp => {
     :address         => 'smtp.lipsiasoft.com',
     :port            => '25',

@@ -5,6 +5,7 @@ class PadrinoWeb < Padrino::Application
   register Padrino::Contrib::ExceptionNotifier
   register Padrino::Contrib::Helpers::AssetsCompressor if Padrino.env == :production
   set :caching, true
+  set :sessions, true
   set :delivery_method, :smtp => {
     :address         => 'smtp.lipsiasoft.com',
     :port            => '25',
