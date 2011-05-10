@@ -12,6 +12,7 @@ PadrinoWeb.controllers :pages, :cache => true do
   get :show, :with => :id, :map => "/pages" do
     @page = Page.find_by_permalink(params[:id])
     not_found unless @page
+    cache_key @page.cache_key
     render 'pages/show'
   end
 end

@@ -11,12 +11,14 @@ PadrinoWeb.controllers :guides, :cache => true do
   get :index, :map => "/guides" do
     @guide = Guide.find_by_title('Home')
     not_found unless @guide
+    cache_key @guide.cache_key
     render 'guides/show'
   end
 
   get :show, :with => :id, :map => "/guides" do
     @guide = Guide.find_by_permalink(params[:id])
     not_found unless @guide
+    cache_key @guide.cache_key
     render 'guides/show'
   end
 

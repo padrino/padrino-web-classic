@@ -1,4 +1,4 @@
-require 'md5'
+require 'digest/md5'
 
 class Account
   include MongoMapper::Document

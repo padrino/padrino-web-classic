@@ -18,7 +18,9 @@ gem 'pdfkit'
 
 # Test requirements
 gem 'rspec', :group => "test"
-gem 'SystemTimer', :require => "system_timer", :group => "test"
+platform :mri_18 do
+ gem 'SystemTimer', :require => "system_timer", :group => "test"
+end
 gem 'rack-test', :require => "rack/test", :group => "test"
 
 # Padrino EDGE
@@ -28,5 +30,5 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 #
 # gem 'padrino-contrib', :path => '/src/padrino-contrib'
 
-gem 'padrino', '0.9.23'
+gem 'padrino', '0.9.27'
 gem 'padrino-contrib', '0.0.6'
