@@ -6,11 +6,10 @@ PadrinoWeb.controllers :blog, :cache => true do
     render 'blog/index'
   end
 
-  get :rss, :map => "/blog.rss" do
+  get :rss, :map => "/blog.rss", :cache => false do
     content_type :rss, :charset => "UTF-8"
     @posts = Post.all(:limit => 10, :draft => false, :order => "updated_at desc")
     render 'blog/rss', :layout => false
-    cache_key @posts.map(&:cache_key).join("-")
   end
 
   get :show, :with => :id, :map => "/blog" do
@@ -20,11 +19,10 @@ PadrinoWeb.controllers :blog, :cache => true do
     render 'blog/show'
   end
 
-  get :category, :with => :id, :map => "/blog/category" do
+  get :category, :with => :id, :map => "/blog/category", :cache => false do
     @category = Category.find_by_permalink(params[:id])
     @posts = Post.paginate(:category_ids => @category.id, :order => "created_at desc", :page => (params[:page] || 1), :draft => false)
     not_found unless @category
-    cache_key(([@category.cache_key] | @posts.map(&:cache_key)).join("-"))
     render 'blog/index'
   end
 end
