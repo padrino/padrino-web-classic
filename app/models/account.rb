@@ -65,7 +65,7 @@ class Account
   # This method return the gravatar
   #
   def gravatar(size=nil)
-    hash = MD5::md5(email)
+    hash = Digest::MD5.hexdigest(email)
     gravatar  = "http://www.gravatar.com/avatar/#{hash}"
     gravatar += "?s=#{size}" if size.present?
     gravatar
