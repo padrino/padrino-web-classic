@@ -3,16 +3,6 @@ class Admin < Padrino::Application
   register Padrino::Mailer
   register Padrino::Admin::AccessControl
 
-  set :session_secret, "7043bc560e73c46f0d5eabedbabd217f9f5277e6935047bb9430296ab7b47a44"
-  set :sessions, true
-  set :delivery_method, :smtp => {
-    :address         => 'smtp.lipsiasoft.com',
-    :port            => '25',
-    :user_name       => 'mailer@lipsiasoft.com',
-    :password        => 'mailer!',
-    :authentication  => :login # :plain, :login, :cram_md5, no auth by default
-  }
-
   # App setting
   set :email_from, "Padrino WebSite <noreply@padrinorb.com>"
   set :domain,     "http://www.padrinorb.com"
