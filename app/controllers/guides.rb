@@ -22,7 +22,7 @@ PadrinoWeb.controllers :guides, :cache => true do
     render 'guides/show'
   end
 
-  get :book, :provides => :pdf do
+  get :book, :provides => :pdf, :cache => false do
     content_type :pdf
     @guides  = Guide.all(:order => "position")
     html     = render 'guides/book', :layout => false
