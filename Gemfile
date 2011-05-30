@@ -19,9 +19,11 @@ gem 'rdoc'
 gem 'pdfkit'
 
 # Test requirements
-gem 'rspec', :group => "test"
-gem 'SystemTimer', :require => "system_timer", :group => "test", :platform => :mri_18
-gem 'rack-test', :require => "rack/test", :group => "test"
+group :test do
+  gem 'rspec'
+  gem 'SystemTimer', :require => "system_timer", :platform => :mri_18
+  gem 'rack-test',   :require => "rack/test"
+end
 
 # Padrino EDGE
 # %w(core gen helpers mailer admin cache).each do |gem|
