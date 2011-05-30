@@ -1,6 +1,7 @@
 source :rubygems
 
 # Project requirements
+gem 'rake'
 gem 'rack-flash'
 gem 'thin' # or mongrel
 gem 'RedCloth'
@@ -30,5 +31,5 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 #
 # gem 'padrino-contrib', :path => '/src/padrino-contrib'
 
-gem 'padrino', '0.9.28'
+gem 'padrino', '0.9.29'
 gem 'padrino-contrib', '0.0.6'

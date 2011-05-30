@@ -3,8 +3,7 @@ PADRINO_ENV  = ENV["PADRINO_ENV"] ||= ENV["RACK_ENV"] ||= "development" unless d
 PADRINO_ROOT = File.dirname(__FILE__) + '/..' unless defined?(PADRINO_ROOT)
 
 require 'rubygems'
-require 'bundler'
-Bundler.setup
+require 'bundler/setup'
 
 Bundler.require(:default, PADRINO_ENV)
 puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
@@ -32,6 +31,12 @@ require 'open-uri'
 
 # Fix for my Passenger Environment
 PDFKit.configuration.wkhtmltopdf = "/usr/local/bin/wkhtmltopdf"
+
+# Padrino::Logger::Config[:development][:log_level] = :debug
+
+# Used for grep changes on github
+OpenSSL::SSL.send(:remove_const, :VERIFY_PEER)
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 # Boot Padrino
 Padrino.load!

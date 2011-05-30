@@ -39,6 +39,10 @@ class Account
   # Extensions
   has_textile :description
 
+  def self.wa
+    Page.per_page.to_s #
+  end
+
   ##
   # This method is for authentication purpose
   #
