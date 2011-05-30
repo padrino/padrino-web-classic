@@ -9,19 +9,18 @@ gem 'popen4'
 
 # Component requirements
 gem 'haml'
-gem 'bson_ext', '>=1.2.0', :require => nil
-gem 'mongo_mapper'
-gem 'diff-lcs', :require => 'diff/lcs'
+gem 'yui-compressor',           :require => 'yui/compressor'
+gem 'diff-lcs',                 :require => 'diff/lcs'
+gem 'bson_ext',      '~>1.3.1', :require => nil
+gem 'activesupport', '~>3.0.7', :require => nil
+gem 'mongo_mapper',  '~>0.9.1'
 gem 'disqus'
-gem 'yui-compressor', :require => 'yui/compressor'
 gem 'rdoc'
 gem 'pdfkit'
 
 # Test requirements
 gem 'rspec', :group => "test"
-platform :mri_18 do
- gem 'SystemTimer', :require => "system_timer", :group => "test"
-end
+gem 'SystemTimer', :require => "system_timer", :group => "test", :platform => :mri_18
 gem 'rack-test', :require => "rack/test", :group => "test"
 
 # Padrino EDGE
