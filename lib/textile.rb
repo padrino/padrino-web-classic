@@ -2,12 +2,12 @@ module Textile
   extend ActiveSupport::Concern
 
   module ClassMethods
+
     def has_textile(*fields)
       options = fields.extract_options!
       options.reverse_merge!(:internal_links => :blog)
-      class_inheritable_accessor  :textile_fields, :textile_options
-      write_inheritable_attribute :textile_fields, fields
-      write_inheritable_attribute :textile_options, options
+      @_textile_fields  = fields
+      @_textile_options = options
       before_save :generate_textile
       textile_fields.each { |f| key "#{f}_html", String }
       textile_fields.each { |f| key "#{f}_chapters", Array } if textile_options[:chapters]
@@ -23,6 +23,14 @@ module Textile
     def regenerate_textile
       all.each { |c| c.update_attributes(:updated_at => Time.now) }
     end
+
+    def textile_fields
+      @_textile_fields
+    end
+
+    def textile_options
+      @_textile_options
+    end
   end
 
   module InstanceMethods
@@ -34,7 +42,7 @@ module Textile
 
     protected
       def generate_textile
-        textile_fields.each do |textile_field|
+        self.class.textile_fields.each do |textile_field|
           next if self[textile_field].blank?
           html = RedCloth.new(self[textile_field]).to_html
           # Parse code
@@ -46,7 +54,7 @@ module Textile
             Albino.colorize(code, lang)
           end
           # Prarse charpters
-          if textile_options[:chapters]
+          if self.class.textile_options[:chapters]
             chapters = []
             html.gsub!(/(<h2>(.*)<\/h2>)/) do
               chapters << $2
@@ -63,7 +71,7 @@ module Textile
           html.gsub!(/\[\[([^\]]+)\]\]/) do
             page, name = *$1.split("|") # this allow to rename link ex: [[Page Name|link me]]
             name ||= page
-            "<a href=\"/#{textile_options[:internal_links]}/#{Post.permalink_for(page.strip)}\">#{name.strip}</a>"
+            "<a href=\"/#{self.class.textile_options[:internal_links]}/#{Post.permalink_for(page.strip)}\">#{name.strip}</a>"
           end
           # Write content
           self.send("#{textile_field}_html=", html)

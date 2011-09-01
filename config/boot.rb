@@ -15,18 +15,10 @@ puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 GC.copy_on_write_friendly = true if GC.respond_to?(:copy_on_write_friendly=)
 
 ##
-# Remove cached css/js
-#
-`rm -rf #{Padrino.root("public", "javascripts", "padrino-bundle.js")}`
-`rm -rf #{Padrino.root("public", "stylesheets", "padrino-bundle.css")}`
-
-##
 # Padrino contrib stuff
 #
-require 'padrino-contrib/exception_notifier'
-require 'padrino-contrib/orm/mm/permalink'
-require 'padrino-contrib/orm/mm/search'
-require 'padrino-contrib/helpers/assets_compressor'
+require 'padrino-contrib/orm/mongo_mapper/permalink'
+require 'padrino-contrib/orm/mongo_mapper/search'
 require 'open-uri'
 
 # Fix for my Passenger Environment
