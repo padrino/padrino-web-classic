@@ -31,4 +31,4 @@ end
 # gem 'padrino-contrib', :path => '/Developer/src/padrino/padrino-contrib'
 
 gem 'padrino', '0.10.2'
-gem 'padrino-contrib', '~>0.1.6'
+gem 'padrino-contrib', '~>0.1.5'
