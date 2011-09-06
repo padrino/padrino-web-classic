@@ -5,6 +5,7 @@ class PadrinoWeb < Padrino::Application
   register Padrino::Cache
   register Padrino::Contrib::ExceptionNotifier
   register Padrino::Contrib::Helpers::AssetsCompressor
+  register Padrino::Contrib::Helpers::JQuery
   set :caching, true
   set :exceptions_subject, "PadrinoWeb"
   set :exceptions_from,    "Padrino WebSite <exceptions@padrinorb.com>"

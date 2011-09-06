@@ -6,7 +6,7 @@
     %link{:href => url(:blog, :rss), :rel => :alternate, :title => :rss, :type => "application/rss+xml"}
     =stylesheet_link_tag "reset", "text", "960", "highlighter", "padrino", :cache => 'padrino.min'
     =stylesheet_link_tag "fancybox", :cache => 'fancybox.min'
-    =javascript_include_tag "jquery.min"
+    =javascript_include_tag_jquery :cache => 'jquery.min'
     =javascript_include_tag "fancybox", "application", :cache => :'padrino.min'
   %body
     .ribbon=link_to image_tag("screencast.png", :alt => key_density("Watch our Blog Tutorial Screencast")), "/guides/blog-tutorial"

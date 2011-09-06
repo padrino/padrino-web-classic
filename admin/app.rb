@@ -3,6 +3,7 @@ class Admin < Padrino::Application
   register Padrino::Helpers
   register Padrino::Mailer
   register Padrino::Admin::AccessControl
+  register Padrino::Contrib::Helpers::JQuery
 
   # App setting
   set :email_from, "Padrino WebSite <noreply@padrinorb.com>"
