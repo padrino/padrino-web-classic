@@ -8,7 +8,7 @@ class PadrinoWeb < Padrino::Application
   register Padrino::Contrib::Helpers::JQuery
   register Padrino::Contrib::Helpers::Flash
 
-  set :caching, true
+  set :caching, false
   set :exceptions_subject, "PadrinoWeb"
   set :exceptions_from,    "Padrino WebSite <exceptions@padrinorb.com>"
   set :exceptions_to,      Account.all.map(&:email)
