@@ -2,7 +2,6 @@ source :rubygems
 
 # Project requirements
 gem 'rake'
-gem 'rack-flash'
 gem 'thin' # or mongrel
 gem 'RedCloth'
 gem 'popen4'
@@ -11,8 +10,8 @@ gem 'popen4'
 gem 'haml'
 gem 'yui-compressor',           :require => 'yui/compressor'
 gem 'diff-lcs',                 :require => 'diff/lcs'
-gem 'bson_ext',      '~>1.3.1', :require => nil
-gem 'mongo_mapper',  '~>0.9.1'
+gem 'bson_ext',      '~>1.4.0', :require => nil
+gem 'mongo_mapper',  '~>0.9.2'
 gem 'disqus'
 gem 'rdoc'
 gem 'pdfkit'
@@ -24,11 +23,13 @@ group :test do
   gem 'rack-test',   :require => "rack/test"
 end
 
-# Padrino EDGE
-# %w(core gen helpers mailer admin cache).each do |gem|
-#   gem 'padrino-' + gem, :path => '/Developer/src/padrino/padrino-framework/padrino-' + gem
-# end
-# gem 'padrino-contrib', :path => '/Developer/src/padrino/padrino-contrib'
-
-gem 'padrino', '0.10.2'
-gem 'padrino-contrib', '~>0.1.5'
+# Padrino
+if path = ENV['PADRINO_PATH']
+  %w(core gen helpers mailer admin cache).each do |g|
+    gem 'padrino-' + g, :path => File.join(path, 'padrino-' + g)
+  end
+  gem 'padrino-contrib', :path => File.expand_path('../padrino-contrib', path)
+else
+  gem 'padrino', '0.10.3'
+  gem 'padrino-contrib', '~>0.1.9'
+end
