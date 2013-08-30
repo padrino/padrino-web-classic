@@ -19,7 +19,7 @@ PadrinoWeb.controllers :base, :cache => false do
     logger.debug "Getting Change Log"
     rdoc = open("https://github.com/padrino/padrino-framework/raw/master/CHANGES.rdoc").read
     rdoc.gsub!(/\= CHANGES\n\n/,'') # remove redundant <h1>CHANGES</h1>
-    rdoc.gsub!(/\(@(.*)\)/, '(<b>{@\1}[https://github.com/\1])</b>')
+    rdoc.gsub!(/\((@.*)\)/){ "(" + $1.gsub(/@([^\), ]+)/, '<b>{@\1}[https://github.com/\1]</b>') + ")" }
     rdoc.gsub!(/#(\d+)/, '{#\1}[https://github.com/padrino/padrino-framework/issues/\1]')
     @html = render :rdoc, rdoc
     @html.sub!(/^<h2>/, '<h2 style="border-top:none">') # remove border from the first h2
