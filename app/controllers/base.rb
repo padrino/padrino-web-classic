@@ -23,7 +23,7 @@ PadrinoWeb.controllers :base, :cache => false do
     rdoc.gsub!(/#(\d+)/, '{#\1}[https://github.com/padrino/padrino-framework/issues/\1]')
     @html = render :rdoc, rdoc
     @html.sub!(/^<h2>/, '<h2 style="border-top:none">') # remove border from the first h2
-    @html.gsub!(/(FIX|NEW)/, '<b class="underline">\1</b>')
+    @html.gsub!(/(FIX|NEW|DOC)/, '<b class="underline">\1</b>')
     @html.gsub!(/^/, " "*4) # add four spaces before each line aka haml indentation
     render 'base/changes'
   end
